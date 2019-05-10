@@ -110,12 +110,14 @@ public class GameManager : MonoBehaviour
                 break;
             case Games.Pong:
                 //Hier Szene Starten
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 break;
             case Games.Bomberman:
                 SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 break;
             case Games.Quiz:
                 //Hier Szene Starten
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 break;
         }
 
