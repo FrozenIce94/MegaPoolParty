@@ -1,9 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BombermanPlayer : MonoBehaviour
 {
+
+    [Header("Common")]
+    public bool IsStudent = false;
+    public GameManager gameManager;
+
 
     [Header("Visuals")]
     public GameObject model;
@@ -12,7 +18,6 @@ public class BombermanPlayer : MonoBehaviour
     [Header("Movement")]
     public float movingVelocity = 5f;
     public float jumpingVelocity = 5f;
-    public float knockbackForce = 5f;
 
     [Header("Equipment")]
     public int health = 5;
@@ -26,15 +31,18 @@ public class BombermanPlayer : MonoBehaviour
     public KeyCode keyDown;
     public KeyCode keyLeft;
     public KeyCode keyRight;
+    public KeyCode placeBomb;
 
-// Private
+    // Private
     private float knockbackTimer;
     private Rigidbody rigidBody;
     private Quaternion targetModelRotation;
     private int maxBombAmount;
 
-
     
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +55,7 @@ public class BombermanPlayer : MonoBehaviour
     void Update()
     {
 
-                model.transform.rotation = Quaternion.Lerp(model.transform.rotation, targetModelRotation, Time.deltaTime * turnSpeed);
+        model.transform.rotation = Quaternion.Lerp(model.transform.rotation, targetModelRotation, Time.deltaTime * turnSpeed);
         if(knockbackTimer > 0)
         {
             knockbackTimer -= Time.deltaTime;
@@ -86,6 +94,20 @@ public class BombermanPlayer : MonoBehaviour
         { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -movingVelocity);
             targetModelRotation = Quaternion.Euler(0, 180, 0);
         }
+
+        if (Input.GetKeyDown(placeBomb))
+        {
+            DoPlaceBomb();
+        }
     }
 
+    public void Hit()
+    {
+        gameManager.EndMinigame(IsStudent);
+    }
+
+    private void DoPlaceBomb()
+    {
+        Instantiate(bombPrefab, transform.position, Quaternion.Euler(Vector3.zero));
+    }
 }
