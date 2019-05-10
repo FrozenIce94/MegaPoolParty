@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         while (nextGame == 0 || nextGame == (int)lastGame)
         {
             int randomNumber = random.Next(1, gameCounts);
+            nextGame = randomNumber;
         }
 
         lastGame = (Games)nextGame;
