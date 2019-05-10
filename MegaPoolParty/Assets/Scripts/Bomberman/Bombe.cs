@@ -10,6 +10,7 @@ public class Bombe : MonoBehaviour
     public float explosionDuration = 0.25f;
     public float explosionRadius = 25f;
     public GameObject explosionModel;
+    public ParticleSystem explosionParticles;
 
     public BombermanPlayer playerInstance;
 
@@ -20,8 +21,9 @@ public class Bombe : MonoBehaviour
     void Start()
     {
         explosionTimer = timeToExplode;
-            explosionModel.transform.localScale = Vector3.one * explosionRadius;
-            explosionModel.SetActive(false);
+        explosionParticles.Stop();
+        explosionModel.transform.localScale = Vector3.one * (explosionRadius * 0.5f);
+        //explosionModel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,9 +41,10 @@ public class Bombe : MonoBehaviour
 
     private IEnumerator Explode()
     {
-        explosionModel.SetActive(true);
+        explosionParticles.transform.position = transform.position;
+        explosionParticles.Play();
         yield return new WaitForSeconds(explosionDuration);
-        var hitObjects = Physics.OverlapSphere(explosionModel.transform.position, explosionRadius * 0.5f);
+        var hitObjects = Physics.OverlapSphere(explosionParticles.transform.position, explosionRadius * 0.6f);
         foreach (var collider in hitObjects)
         {
             var firstHit = false;
