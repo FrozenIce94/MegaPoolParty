@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("GameManager: Schüler gewonnen");
             ShowEndScreen(true);
         }
+
+        ShowHub();
     }
 
     /// <summary>
