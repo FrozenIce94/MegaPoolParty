@@ -1,0 +1,10 @@
+{
+	"questions":
+	[
+		{
+			"question" : "what is the meaning of live the universe and everything?",
+			"rightAnswer" : "42",
+			"wrongAnswers" : ["lunch", "games", "3.141"]
+		}
+	]
+}
