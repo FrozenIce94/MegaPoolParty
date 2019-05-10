@@ -6,14 +6,14 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
-    private bool m_isAxisInUse = false;
+    
 
-    public GameObject pauseMenu;
+    private bool m_isAxisInUse = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Cancel") == 1 && m_isAxisInUse == false)
+        if (Input.GetAxis("Cancel") == 1 && m_isAxisInUse == false)
         {
             if (GameIsPaused)
             {
@@ -25,28 +25,19 @@ public class PauseMenu : MonoBehaviour
 
             m_isAxisInUse = true;
         }
-        if(Input.GetAxisRaw("Cancel") == 0)
+        if(Input.GetAxis("Cancel") == 0)
         {
             m_isAxisInUse = false;
         }
     }
 
-    public void Resume()
+    void Resume()
     {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-        GameIsPaused = false;
+
     }
 
     void Pause()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
-        GameIsPaused = true;
-    }
 
-    public void Quit()
-    {
-        Application.Quit();
     }
 }
