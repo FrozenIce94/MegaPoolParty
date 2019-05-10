@@ -9,7 +9,9 @@ public class Bombe : MonoBehaviour
     public float timeToExplode = 5f;
     public float explosionDuration = 0.25f;
     public float explosionRadius = 25f;
-    public GameObject[] explosionModels;
+    public GameObject explosionModel;
+
+    public BombermanPlayer playerInstance;
 
     private float explosionTimer;
     private bool exploded;
@@ -18,11 +20,8 @@ public class Bombe : MonoBehaviour
     void Start()
     {
         explosionTimer = timeToExplode;
-        foreach (var explosionModel in explosionModels)
-        {
             explosionModel.transform.localScale = Vector3.one * explosionRadius;
             explosionModel.SetActive(false);
-        }
     }
 
     // Update is called once per frame
@@ -33,27 +32,29 @@ public class Bombe : MonoBehaviour
         {
             exploded = true;
 
-            var hitObjects = Physics.OverlapSphere(transform.position, explosionRadius);
-            foreach (var collider in hitObjects)
-            {
-                var player = collider.GetComponent<BombermanPlayer>();
-                if (player != null)
-                {
-                    player.Hit();
-                }
 
-            }
             StartCoroutine(Explode());
         }
     }
 
     private IEnumerator Explode()
     {
-        foreach (var explosionModel in explosionModels)
-        {
-            explosionModel.SetActive(true);
-        }
+        explosionModel.SetActive(true);
         yield return new WaitForSeconds(explosionDuration);
+        var hitObjects = Physics.OverlapSphere(explosionModel.transform.position, explosionRadius * 0.5f);
+        foreach (var collider in hitObjects)
+        {
+            var firstHit = false;
+            var player = collider.GetComponent<BombermanPlayer>();
+            if (player != null && !firstHit)
+            {
+                Debug.Log($"Der {(player.IsStudent ? "Lehrer" : "Schüler")} hat gewonnen");
+                player.Hit();
+                firstHit = true;
+            }
+
+        }
         Destroy(gameObject);
+        playerInstance.bombAmount += 1;
     }
 }

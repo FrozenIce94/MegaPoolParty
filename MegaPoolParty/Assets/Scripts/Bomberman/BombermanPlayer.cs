@@ -23,7 +23,6 @@ public class BombermanPlayer : MonoBehaviour
     public int health = 5;
     public GameObject bombPrefab;
     public int bombAmount = 2;
-    public float throwingSpeed;
 
 
     [Header("KeyBinding")]
@@ -103,11 +102,16 @@ public class BombermanPlayer : MonoBehaviour
 
     public void Hit()
     {
-        gameManager.EndMinigame(IsStudent);
+        gameManager.EndMinigame(!IsStudent);
     }
 
     private void DoPlaceBomb()
     {
-        Instantiate(bombPrefab, transform.position, Quaternion.Euler(Vector3.zero));
+        if (bombAmount <= 0) return;
+        bombAmount -= 1;
+        var bombObj = Instantiate(bombPrefab, transform.position, Quaternion.Euler(Vector3.zero));
+        var bomb = bombObj.GetComponent<Bombe>();
+        bomb.playerInstance = this;
+
     }
 }
