@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -81,6 +82,18 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
+    /// <summary>
+    /// Schreibt alle aktuellen Werte in die Debug Log
+    /// </summary>
+    public void DebugCurrentData()
+    {
+        Debug.Log("GameManager: ----- Start DebugPrint -----");
+        Debug.Log("GameManager: Playfields: " + playfield);
+        Debug.Log("GameManager: Startfeld: " + currentfield);
+        Debug.Log("GameManager: Game Running: " + gamerunning);
+        Debug.Log("GameManager: ----- End DebugPrint -----");
+    }
+
     #endregion
     #region "Private Methods"
 
@@ -98,8 +111,8 @@ public class GameManager : MonoBehaviour
             case Games.Pong:
                 //Hier Szene Starten
                 break;
-            case Games.Hockey:
-                //Hier Szene Starten
+            case Games.Bomberman:
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 break;
             case Games.Quiz:
                 //Hier Szene Starten
@@ -154,7 +167,7 @@ public class GameManager : MonoBehaviour
     {
         None = 0,
         Pong = 1,
-        Hockey = 2,
+        Bomberman = 2,
         Quiz = 3
     }
 

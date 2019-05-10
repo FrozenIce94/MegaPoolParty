@@ -7,8 +7,18 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     private bool m_isAxisInUse = false;
+    private GameManager gm;
 
     public GameObject pauseMenu;
+    public GameObject mainMenu;
+
+    /// <summary>
+    /// Start der Szene
+    /// </summary>
+    private void Start()
+    {
+        gm = GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -49,5 +59,20 @@ public class PauseMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void HideMainMenu()
+    {
+        mainMenu.SetActive(false);
+    }
+
+    /// <summary>
+    /// Startet das Game
+    /// </summary>
+    public void PlayGame()
+    {
+        gm.InitializeGame();
+        HideMainMenu();
+        gm.StartRandomGame();
     }
 }
