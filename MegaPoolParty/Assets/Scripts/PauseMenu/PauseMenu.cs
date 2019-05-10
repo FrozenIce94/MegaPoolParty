@@ -6,38 +6,73 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
-    
-
     private bool m_isAxisInUse = false;
+    private GameManager gm;
+
+    public GameObject pauseMenu;
+    public GameObject mainMenu;
+
+    /// <summary>
+    /// Start der Szene
+    /// </summary>
+    private void Start()
+    {
+        gm = GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Cancel") == 1 && m_isAxisInUse == false)
+        if (Input.GetAxisRaw("Cancel") == 1 && m_isAxisInUse == false)
         {
             if (GameIsPaused)
             {
                 Resume();
-            } else
+            }
+            else
             {
                 Pause();
             }
 
             m_isAxisInUse = true;
         }
-        if(Input.GetAxis("Cancel") == 0)
+        if (Input.GetAxisRaw("Cancel") == 0)
         {
             m_isAxisInUse = false;
         }
     }
 
-    void Resume()
+    public void Resume()
     {
-
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        GameIsPaused = false;
     }
 
     void Pause()
     {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+        GameIsPaused = true;
+    }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    private void HideMainMenu()
+    {
+        mainMenu.SetActive(false);
+    }
+
+    /// <summary>
+    /// Startet das Game
+    /// </summary>
+    public void PlayGame()
+    {
+        gm.InitializeGame();
+        HideMainMenu();
+        gm.StartRandomGame();
     }
 }

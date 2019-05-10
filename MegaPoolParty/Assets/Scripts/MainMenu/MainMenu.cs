@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
 
     private GameManager gm;
+    private Canvas cv;
 
     /// <summary>
     /// Start der Szene
@@ -13,6 +14,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         gm = GetComponent<GameManager>();
+        cv = GetComponent<Canvas>();
     }
 
     /// <summary>
@@ -20,7 +22,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        gm.InitializeGame();
+        gm.InitializeGame();   
         gm.StartRandomGame();
     }
 
