@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class BombermanController : MonoBehaviour
@@ -73,12 +74,14 @@ public class BombermanController : MonoBehaviour
 
     private void PlaceBlocksWithFile()
     {
-        var lineArray = levelGenFile.text.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-        var chosenLevel = rnd.Next(0, lineArray.Length / 7);
-        for (int lineIndex = chosenLevel; lineIndex < chosenLevel + 7; lineIndex++)
+        var lineArray = Regex.Split(levelGenFile.text, "\r\n|\r|\n"); 
+        var gamesCount = lineArray.Length / 8;
+        var chosenLevel = rnd.Next(0, gamesCount + 1);
+        Debug.Log($"Ich habe mich für Level {chosenLevel} entschieden.");
+        for (int lineIndex = chosenLevel * 8; lineIndex < chosenLevel * 8 + 7; lineIndex++)
         {
             var line = lineArray[lineIndex];
-            var x = lineIndex - chosenLevel;
+            var x = lineIndex - chosenLevel * 8;
             for (int y = 0; y < 7; y++)
             {
                 if(line[y] == '1')
@@ -156,7 +159,9 @@ public class BombermanController : MonoBehaviour
                     chosenBlocks[x, y] = false;
                 }
             }
-            PlaceBlocksRandom();
+            if(generateRandomLevel)
+            { PlaceBlocksRandom(); } else { PlaceBlocksWithFile(); }
+                
         } 
         if(Input.GetKeyDown(KeyCode.F) && generateRandomLevel)
         {

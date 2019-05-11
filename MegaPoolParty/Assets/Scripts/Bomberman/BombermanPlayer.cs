@@ -153,7 +153,7 @@ public class BombermanPlayer : MonoBehaviour
                                   new Vector3(placeVector.x, 
                                               bombPrefab.transform.localScale.y * 10,
                                               placeVector.z),
-                                  Quaternion.Euler(Vector3.zero), transform);
+                                  Quaternion.Euler(Vector3.zero), controllerInstance.transform);
         var bombCollider = bombObj.GetComponent<Collider>();
         currentBombColliders.Add(bombCollider);
         Physics.IgnoreCollision(bombCollider, playerCollider);
