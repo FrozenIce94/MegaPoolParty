@@ -10,6 +10,7 @@ public class BombermanPlayer : MonoBehaviour
     [Header("Common")]
     public bool IsStudent = false;
     public GameManager gameManager;
+    public BombermanController controllerInstance;
     public BombermanPlayer otherPlayer;
     public List<Collider> currentBombColliders = new List<Collider>();
 
@@ -147,11 +148,12 @@ public class BombermanPlayer : MonoBehaviour
         RefreshBombText();
 
         //Create Bomb and disable collider until collision is left
+        var placeVector =  controllerInstance.GetNearestPositionInGrid(transform.position);
         var bombObj = Instantiate(bombPrefab, 
-                                  new Vector3(transform.position.x, 
-                                              bombPrefab.transform.localScale.y,
-                                              transform.position.z),
-                                  Quaternion.Euler(Vector3.zero));
+                                  new Vector3(placeVector.x, 
+                                              bombPrefab.transform.localScale.y * 10,
+                                              placeVector.z),
+                                  Quaternion.Euler(Vector3.zero), transform);
         var bombCollider = bombObj.GetComponent<Collider>();
         currentBombColliders.Add(bombCollider);
         Physics.IgnoreCollision(bombCollider, playerCollider);
@@ -169,6 +171,5 @@ public class BombermanPlayer : MonoBehaviour
 
         var bomb = bombObj.GetComponent<Bombe>();
         bomb.playerInstance = this;
-
     }
 }

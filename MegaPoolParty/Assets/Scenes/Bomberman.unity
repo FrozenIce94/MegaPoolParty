@@ -1416,6 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pm: {fileID: 0}
 --- !u!4 &287485387
 Transform:
   m_ObjectHideFlags: 0
@@ -1442,6 +1443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d924e410585d147926653b25bbfae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateRandomLevel: 0
+  levelGenFile: {fileID: 4900000, guid: a0795057a91b9fb4383bbbb29e5774b2, type: 3}
   minBlockCountPerSide: 10
   maxBlockCountPerSide: 20
   blockPrefab: {fileID: 8262824690454133352, guid: 57780ad0d03940545995ab890de40684,
@@ -7382,6 +7385,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Student
       objectReference: {fileID: 0}
+    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 287485386}
+    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 174397429}
+    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
+        type: 3}
+      propertyPath: bombLabel
+      value: 
+      objectReference: {fileID: 84588195}
+    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
+        type: 3}
+      propertyPath: controllerInstance
+      value: 
+      objectReference: {fileID: 287485388}
     - target: {fileID: 3044951561229799241, guid: 6a5398168d7807248af17d7cd8152f44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7437,21 +7460,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 287485386}
-    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
-        type: 3}
-      propertyPath: otherPlayer
-      value: 
-      objectReference: {fileID: 174397429}
-    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
-        type: 3}
-      propertyPath: bombLabel
-      value: 
-      objectReference: {fileID: 84588195}
     - target: {fileID: 5952727162614933834, guid: 6a5398168d7807248af17d7cd8152f44,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7481,6 +7489,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teacher
       objectReference: {fileID: 0}
+    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 287485386}
+    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 1450395676}
+    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
+        type: 3}
+      propertyPath: bombLabel
+      value: 
+      objectReference: {fileID: 1909934194}
+    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
+        type: 3}
+      propertyPath: controllerInstance
+      value: 
+      objectReference: {fileID: 287485388}
     - target: {fileID: 4778828411197313928, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7536,21 +7564,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 287485386}
-    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
-        type: 3}
-      propertyPath: otherPlayer
-      value: 
-      objectReference: {fileID: 1450395676}
-    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
-        type: 3}
-      propertyPath: bombLabel
-      value: 
-      objectReference: {fileID: 1909934194}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14eba55d826bfcc4bacc4d6688f01cdd, type: 3}
 --- !u!1 &4479336510948397107
@@ -7708,11 +7721,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1196518061}
     m_Modifications:
-    - target: {fileID: 1016032117137054415, guid: 7e091efb3afb81b428fa398766135b6c,
-        type: 3}
-      propertyPath: m_Name
-      value: "B\xFCcherregal"
-      objectReference: {fileID: 0}
     - target: {fileID: 4054068744211753180, guid: 7e091efb3afb81b428fa398766135b6c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7767,6 +7775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016032117137054415, guid: 7e091efb3afb81b428fa398766135b6c,
+        type: 3}
+      propertyPath: m_Name
+      value: "B\xFCcherregal"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e091efb3afb81b428fa398766135b6c, type: 3}

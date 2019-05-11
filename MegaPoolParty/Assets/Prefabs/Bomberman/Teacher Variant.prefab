@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 8775101881552315430, guid: bac2f4a7cf6b2c140a9490e754f5e12b,
         type: 3}
       propertyPath: placeBomb
-      value: 256
+      value: 303
       objectReference: {fileID: 0}
     - target: {fileID: 8775101881552315430, guid: bac2f4a7cf6b2c140a9490e754f5e12b,
         type: 3}
