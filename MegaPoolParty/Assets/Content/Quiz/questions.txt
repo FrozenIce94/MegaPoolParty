@@ -39,154 +39,6 @@
 					"questionText" : "Was ist die Hauptstadt von Finnland?",
 					"rightAnswer" : "Helsinki",
 					"wrongAnswers" : ["Athen", "Litauen", "Wien"]
-				}
-			]
-		},
-		{
-			"categoryName" : "Allgemeinwissen",
-			"questions":
-			[
-				{
-					"questionText" : "Wen besiegte das tapfere Schneiderlein?",
-					"rightAnswer" : "Zwerg",
-					"wrongAnswers" : ["Riesen", "Elfen", "Orks"]
-				},
-                {
-					"questionText" : "Welche Tiere kommen bei der Polizei nicht zum Einsatz?",
-					"rightAnswer" : "Blindenhunde",
-					"wrongAnswers" : ["Suchhunde", "Polizeihunde", "Reiterpferde"]
-				},
-                {
-					"questionText" : "Welche Vorfahrtsregel gibt es im Strassenverkehr?",
-					"rightAnswer" : "Rechts vor links",
-					"wrongAnswers" : ["Links vor rechts", "Oben vor unten", "Unten vor oben"]
-				},
-                {
-					"questionText" : "Was bedeutet: Nie ohne Seife waschen?",
-					"rightAnswer" : "Reihenfolge der Himmelsrichtungen",
-					"wrongAnswers" : ["Auflistung der Kontiente", "Die Zeitumstellung", "Planeten"]
-				},
-                {
-					"questionText" : "Zu wie viel Prozent besteht der Mensch aus Wasser?",
-					"rightAnswer" : "ca. 70%",
-					"wrongAnswers" : ["ca. 50%", "ca. 20%", "ca. 10%"]
-				},
-                {
-					"questionText" : "Welchen Hai gibt es wirklich?",
-					"rightAnswer" : "Den Zitronenhai",
-					"wrongAnswers" : ["Den Traubenhai", "Den Mangohai", "Den Erdbeerhai"]
-				}
-			]
-		},
-		{
-			"categoryName" : "Mathe",
-			"questions":
-			[
-				{
-					"questionText" : "Was ist die Wurzel von 9",
-					"rightAnswer" : "3",
-					"wrongAnswers" : ["7", "18", "2"]
-				},
-				{
-					"questionText" : "7 x 8 =",
-					"rightAnswer" : "56",
-					"wrongAnswers" : ["51", "65", "73"]
-				},
-				{
-					"questionText" : "5 + 3 x 2 =",
-					"rightAnswer" : "11",
-					"wrongAnswers" : ["16", "13", "24"]
-				},
-				{
-					"questionText" : "(7 + 2) x 3 =",
-					"rightAnswer" : "27",
-					"wrongAnswers" : ["13", "23", "17"]
-				},
-				{
-					"questionText" : "14 + 767 = ",
-					"rightAnswer" : "781",
-					"wrongAnswers" : ["475", "944", "504"]
-				},
-				{
-					"questionText" : "9.400 + 48.400 = ",
-					"rightAnswer" : "57.800",
-					"wrongAnswers" : ["64.000", "59.500", "65.800"]
-				},
-				{
-					"questionText" : "208 + 636 = ",
-					"rightAnswer" : "844",
-					"wrongAnswers" : ["899", "841", "807"]
-				}
-			]
-		},
-		{
-			"categoryName" : "Sprachen",
-			"questions":
-			[
-				{
-					"questionText" : "Frage1?",
-					"rightAnswer" : "Richtig",
-					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
-				},
-				{
-					"questionText" : "Frage2?",
-					"rightAnswer" : "Richtig",
-					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
-				},				{
-					"questionText" : "Frage3?",
-					"rightAnswer" : "Richtig",
-					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
-				},
-				{
-					"questionText" : "Frage4?",
-					"rightAnswer" : "Richtig",
-					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
-				}
-
-			]
-		}
-	]
-{
-	"categories" :
-	[
-		{
-			"categoryName" : "Erdkunde",
-			"questions":
-			[
-				{
-					"questionText" : "Welches Land grenzt nicht an Deutschland?",
-					"rightAnswer" : "Schweden",
-					"wrongAnswers" : ["Italien", "Polen", "Oestereich"]
-				},
-				{
-					"questionText" : "Was ist die Hauptstadt von Deutschland?",
-					"rightAnswer" : "Berlin",
-					"wrongAnswers" : ["Bremen", "Muenchen", "Bonn"]
-				},
-				{
-					"questionText" : "Von was ist Hamburg die Hauptstadt?",
-					"rightAnswer" : "Hamburg",
-					"wrongAnswers" : ["Sachsen-Anhalt", "Bayern", "Mecklenburg-Vorpommern"]
-				},
-				{
-					"questionText" : "Was ist die Hauptstadt von Bulgarien?",
-					"rightAnswer" : "Sofia",
-					"wrongAnswers" : ["Bruessel", "Burges", "Minsk"]
-				},
-				{
-					"questionText" : "Was ist die Hauptstadt von Portugal?",
-					"rightAnswer" : "Lissabon",
-					"wrongAnswers" : ["Barcelona", "Madrid", "Neapel"]
-				},
-				{
-					"questionText" : "Was ist die Hauptstadt von Polen?",
-					"rightAnswer" : "Warschau",
-					"wrongAnswers" : ["Prag", "Stettin", "Copenhagen"]
-				},
-				{
-					"questionText" : "Was ist die Hauptstadt von Finnland?",
-					"rightAnswer" : "Helsinki",
-					"wrongAnswers" : ["Athen", "Litauen", "Wien"]
 				},
 				{
 					"questionText" : "Welches Gebirge trennt Europa von Asien?",
@@ -231,14 +83,29 @@
 					"wrongAnswers" : ["51", "65", "73"]
 				},
 				{
-					"questionText" : "5 + 3 * 2 =",
+					"questionText" : "5 + 3 x 2 =",
 					"rightAnswer" : "11",
 					"wrongAnswers" : ["16", "13", "24"]
 				},
 				{
-					"questionText" : "(7 + 2) * 3 =",
+					"questionText" : "(7 + 2) x 3 =",
 					"rightAnswer" : "27",
 					"wrongAnswers" : ["13", "23", "17"]
+				},
+				{
+					"questionText" : "14 + 767 = ",
+					"rightAnswer" : "781",
+					"wrongAnswers" : ["475", "944", "504"]
+				},
+				{
+					"questionText" : "9.400 + 48.400 = ",
+					"rightAnswer" : "57.800",
+					"wrongAnswers" : ["64.000", "59.500", "65.800"]
+				},
+				{
+					"questionText" : "208 + 636 = ",
+					"rightAnswer" : "844",
+					"wrongAnswers" : ["899", "841", "807"]
 				}
 			]
 		},
