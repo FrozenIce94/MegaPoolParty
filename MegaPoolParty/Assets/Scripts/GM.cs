@@ -14,10 +14,15 @@ public class GM : MonoBehaviour {
 	public Text Text_Score;
 	public Text Text_Sieg;
 	public Text Text_Start;
+    public Text Text_Count;
 
     private GameManager gameM;
 
     public static bool hasBall;
+
+    public bool firstBall;
+
+    public float Countdowntime;
 	
 		// Use this for initialization
 	void Awake () 
@@ -26,6 +31,7 @@ public class GM : MonoBehaviour {
         {
             instance = this;
             hasBall = false;
+            firstBall = true;
         }
         else if (instance != this)
             Destroy(gameObject);
@@ -46,6 +52,7 @@ public class GM : MonoBehaviour {
    
         if ((Input.GetButtonDown("Fire1_S") || Input.GetButtonDown("Fire1_L") || Input.GetKey(KeyCode.Space)) && hasBall == false)
         {
+            if (!firstBall) { return; }
             Debug.Log("new Ball");
             hasBall = true;
              Setup();
@@ -54,12 +61,22 @@ public class GM : MonoBehaviour {
 
     public void Setup()
 	{
-		cloneBall = Instantiate(Ball, transform.position, Quaternion.identity) as GameObject;
+        Text_Count.text = "3";
+        Text_Count.enabled = false;
+       cloneBall = Instantiate(Ball, transform.position, Quaternion.identity) as GameObject;
 		Invoke ("TextStartaus", 0.3f);
 
 	}
 
-	private void TextStartaus()
+    public void startSetup()
+    {
+        Debug.Log(Countdowntime + ":" + Time.timeSinceLevelLoad);
+      
+       Text_Count.text = "1";
+
+        Invoke("Setup", 0.8f);
+    }
+    private void TextStartaus()
 	{
 		Text_Start.enabled = false;
         bool pos = false;
@@ -103,11 +120,23 @@ public class GM : MonoBehaviour {
 			return;
 			break;
 		}
-		//Invoke ("Setup", 3);
 
+        Countdowntime = Time.timeSinceLevelLoad;
+        Text_Count.enabled = true;
+        Text_Count.text = "2";
+        Invoke("startSetupZwei", 0.8f);
 	}
 
-	enum Spieler
+    public void startSetupZwei()
+    {
+        Debug.Log(Countdowntime + ":" + Time.timeSinceLevelLoad);
+
+        Text_Count.text = "1";
+
+        Invoke("startSetup", 0.8f);
+    }
+
+    enum Spieler
 	{
 		keiner,
 		links,
@@ -128,8 +157,8 @@ public class GM : MonoBehaviour {
 
 	private void Neustart()
 	{
-        Application.LoadLevel (0);
-        //gameM.EndMinigame(true);
+       // Application.LoadLevel (0);
+        gameM.EndMinigame(true);
 
     }
 
