@@ -72,11 +72,21 @@ public class Quiz : MonoBehaviour
         categoryObj.GetComponent<TextMeshPro>().text = db.categories[categoryIndex].categoryName;
         answeredQuestions = new ArrayList();
         answerPermutation = new ArrayList();
+
     }
+
+    bool timerRegistered = false;
 
     // Update is called once per frame
     void Update()
     {
+        if(!timerRegistered)
+            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Quiz);
+        if(!timerRegistered)
+        {
+            return;
+        }
+
         float currentTime = Time.time;
 
         if (newQuestion)
@@ -111,6 +121,7 @@ public class Quiz : MonoBehaviour
         {
             answerStartTime = currentTime;
             answerIndex += 1;
+            answerIndex = answerIndex % (currentQuestion.wrongAnswers.Length + 1);
 
             newAnswer = false;
         }
@@ -173,11 +184,16 @@ public class Quiz : MonoBehaviour
             newAnswer = true;
         }
 
-        if(endRequested)
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            GetComponent<GameManager>().EndMinigame(null);
+        }
+
+        if (endRequested)
         {
             if (teacherScore == studentScore)
             {
-
+                GetComponent<GameManager>().EndMinigame(null);
             }
             else if (teacherScore < studentScore)
             {

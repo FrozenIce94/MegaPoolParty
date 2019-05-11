@@ -8,7 +8,7 @@
 				{
 					"questionText" : "Welches Land grenzt nicht an Deutschland?",
 					"rightAnswer" : "Schweden",
-					"wrongAnswers" : ["Italien", "Polen", "Östereich"]
+					"wrongAnswers" : ["Italien", "Polen", "Oestereich"]
 				},
 				{
 					"questionText" : "Was ist die Hauptstadt von Deutschland?",
