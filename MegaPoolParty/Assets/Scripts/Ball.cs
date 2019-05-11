@@ -16,15 +16,17 @@ public class Ball : MonoBehaviour {
 
     void LateUpdate()
     {
-        //if (transform.position.y>0.21)
-       // {
-            transform.position = new Vector3(transform.position.x, 0.21f, transform.position.z);
-       // }
+       // if (transform.position.y>0.22f)
+       //  {
+       //transform.position = new Vector3(transform.position.x, transform.position.y-0.1f, transform.position.z);
+      //   }
     }
 
     void FixedUpdate()
     {
-        rb.AddForce(Vector3.forward);
+        //rb.transform.Translate(Vector3.left);
+       // rb.AddForce(Vector3.forward);
+       
     }
     // Update is called once per frame
     void Update()

@@ -46,7 +46,7 @@ public class GameControll : MonoBehaviour
         rightPanel.transform.position = playerPosRight;
 
         //LehrerV
-
+        
         /*
         float ArrowInput = 0;
         if (Input.GetKey(KeyCode.UpArrow))
