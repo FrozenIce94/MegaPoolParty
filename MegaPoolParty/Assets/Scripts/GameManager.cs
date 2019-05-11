@@ -76,15 +76,18 @@ public class GameManager : MonoBehaviour
     /// Startet ein neues Spiel sofern keins aktiv ist
     /// </summary>
     /// <param name="winner">Schüler = true, Lehrer = false</param>
-    public void EndMinigame(bool winner)
+    public void EndMinigame(bool? winner)
     {
-
-        if (winner)
+        if (winner.HasValue)
         {
-            currentfield += 1;
-        } else
-        {
-            currentfield -= 1;
+            if (winner.Value)
+            {
+                currentfield += 1;
+            }
+            else
+            {
+                currentfield -= 1;
+            }
         }
 
         DebugCurrentData();
@@ -134,9 +137,6 @@ public class GameManager : MonoBehaviour
                 break;
             case Games.pong:
                 SceneManager.LoadScene(3, LoadSceneMode.Additive);
-                break;
-            case Games.Quiz:
-                SceneManager.LoadScene(4, LoadSceneMode.Additive);
                 break;
         }
 
@@ -205,7 +205,6 @@ public class GameManager : MonoBehaviour
         Bomberman = 1,
         Swimming = 2,
         pong = 3,
-        Quiz = 4,
     }
 
     #endregion
