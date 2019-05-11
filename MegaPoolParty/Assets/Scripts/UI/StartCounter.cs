@@ -43,12 +43,16 @@ public class StartCounter : MonoBehaviour
         {
             if (Input.GetAxisRaw("Jump") == 1 && m_isAxisInUse == false)
             {
-                showInstructions = false;
                 HideInstructions();
                 StartCountdown();
 
                 m_isAxisInUse = true;
             }
+        }
+
+        if (Input.GetAxisRaw("Jump") == 0)
+        {
+            m_isAxisInUse = false;
         }
 
         if (timerActive)
@@ -86,6 +90,10 @@ public class StartCounter : MonoBehaviour
         timerFinishedCallback = callback;
 
         timeLeft = initialTime;
+
+        countdownActive = false;
+        timerActive = false;
+        showInstructions = false;
 
         Time.timeScale = 0.0f;
 
@@ -130,6 +138,7 @@ public class StartCounter : MonoBehaviour
 
     void HideInstructions()
     {
+        showInstructions = false;
         instructions.SetActive(false);
     }
 

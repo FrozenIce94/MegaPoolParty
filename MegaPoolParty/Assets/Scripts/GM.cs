@@ -25,6 +25,9 @@ public class GM : MonoBehaviour
 
     public float Countdowntime;
 
+
+    public bool SchuelerWinner;
+
     // Use this for initialization
     void Awake()
     {
@@ -152,10 +155,12 @@ public class GM : MonoBehaviour
         if ((Spieler)wer == Spieler.links)
         {
             Text_Sieg.text = "Sieger ist der Schüler!";
+            SchuelerWinner = true;
         }
         else if ((Spieler)wer == Spieler.rechts)
         {
             Text_Sieg.text = "Sieger ist der Lehrer!";
+            SchuelerWinner = false;
         }
         Text_Sieg.enabled = true;
         Invoke("Neustart", 2);
@@ -164,7 +169,7 @@ public class GM : MonoBehaviour
     private void Neustart()
     {
         // Application.LoadLevel (0);
-        gameM.EndMinigame(true);
+        gameM.EndMinigame(SchuelerWinner);
 
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -15,6 +16,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject endScreen;
 
+    public Button mainMenuButton, pauseMenuButton, endButton;
+
     public TextMeshProUGUI endtext;
 
     /// <summary>
@@ -23,6 +26,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         gm = GetComponent<GameManager>();
+        mainMenuButton.Select();
     }
 
     // Update is called once per frame
@@ -61,6 +65,7 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             GameIsPaused = true;
+            pauseMenuButton.Select();
         }
     }
 
@@ -100,6 +105,8 @@ public class PauseMenu : MonoBehaviour
     public void ShowEndScreen(bool winner)
     {
         pauseMenu.SetActive(false);
+
+        endButton.Select();
 
         if(endtext != null)
         {
