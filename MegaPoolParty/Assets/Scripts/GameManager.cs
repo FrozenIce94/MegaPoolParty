@@ -18,11 +18,20 @@ public class GameManager : MonoBehaviour
 
     private static int playfield;
     private static Games lastGame;
-    private static int currentfield;
+    private static int currentfield, lastfield;
 
     private static bool gamefinished;
 
     public static StartCounter timer;
+    #endregion
+    #region "Start"
+    private void Start()
+    {
+        if(this.gameObject.scene.buildIndex == 0)
+        {
+            SceneManager.LoadScene(6, LoadSceneMode.Additive);
+        }
+    }
     #endregion
     #region "Public Methods"
 
@@ -33,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         playfield = 7;
         currentfield = 4;
+        lastfield = 4;
         lastGame = Games.None;
         gamerunning = false;
         gamefinished = false;
@@ -83,6 +93,8 @@ public class GameManager : MonoBehaviour
     {
         if (winner.HasValue)
         {
+            lastfield = currentfield;
+
             if (winner.Value)
             {
                 currentfield += 1;
@@ -96,6 +108,17 @@ public class GameManager : MonoBehaviour
         DebugCurrentData();
 
         CheckGameEnd();
+    }
+
+    /// <summary>
+    /// Schließt den Hub und startet das nächste Spiel
+    /// </summary>
+    /// <param name="winner">Schüler = true, Lehrer = false</param>
+    public void EndHub()
+    {
+        Debug.Log("GameManager: Hub beendet");
+        SceneManager.UnloadSceneAsync(5);
+        StartRandomGame();
     }
 
     /// <summary>
@@ -223,19 +246,6 @@ public class GameManager : MonoBehaviour
     /// <param name="winner">Schüler = true, Lehrer = false</param>
     private void ShowEndScreen(bool winner)
     {
-
-        //Scene menu = SceneManager.GetSceneAt(0);
-        //GameObject[] objects = menu.GetRootGameObjects();
-        //Canvas cv;
-        //for (int i = 0; i < objects.Length - 1; i++)
-        //{
-        //    //if(objects[i].name == "UICanvas")
-        //    //{
-        //    //    (objects[i].SendMessage(""));
-        //    //}
-        //}
-
-        //pm.ShowEndScreen(winner);
         if (gamefinished) return;
         gamefinished = true;
         GameObject tempObject = GameObject.Find("UICanvas");
@@ -248,12 +258,13 @@ public class GameManager : MonoBehaviour
     private void CloseSceneAndShowHub()
     {
         SceneManager.UnloadSceneAsync((int)lastGame);
-        StartRandomGame();
-
-        
-        //Hier Hub aufrufen mit Parameter für Änderung? oder ruft der Hub das auf
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
 
+    public KeyValuePair<int, int> GetPositions()
+    {
+        return new KeyValuePair<int, int>(lastfield, currentfield);
+    }
     #endregion
     #region "Enum"
 
