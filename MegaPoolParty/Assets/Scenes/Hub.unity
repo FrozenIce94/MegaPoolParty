@@ -209,6 +209,28 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 508674426b3464c40b19effeededa440, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6617cebf13e664459f828e9b9c2e126, type: 3}
+--- !u!1 &40754674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a6617cebf13e664459f828e9b9c2e126,
+    type: 3}
+  m_PrefabInstance: {fileID: 40754673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &40754675
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40754674}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &197964314
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +563,7 @@ GameObject:
   - component: {fileID: 686831822}
   - component: {fileID: 686831821}
   - component: {fileID: 686831825}
+  - component: {fileID: 686831826}
   m_Layer: 5
   m_Name: CanvasHub
   m_TagString: Untagged
@@ -640,7 +663,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ae8eb7ec0939041aea8b820d9103d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
+  player: {fileID: 40754675}
+  gm: {fileID: 686831826}
+--- !u!114 &686831826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686831820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamerunning: 0
+  CheatNextGame: 0
 --- !u!1 &1353822200
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +835,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1418951981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 686831825}
+        m_MethodName: NextGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1418951981
