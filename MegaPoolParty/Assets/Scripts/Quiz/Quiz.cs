@@ -56,6 +56,9 @@ public class Quiz : MonoBehaviour
 
     bool endRequested = false;
 
+    ArrayList answerPermutation;
+    ArrayList answeredQuestions;
+
     public void requestEnd()
     {
         endRequested = true;
@@ -67,6 +70,8 @@ public class Quiz : MonoBehaviour
         db = JsonUtility.FromJson<QuestionDB>(txtDb.text);
         categoryIndex = (int)Math.Round((db.categories.Length - 1) * UnityEngine.Random.value);
         categoryObj.GetComponent<TextMeshPro>().text = db.categories[categoryIndex].categoryName;
+        answeredQuestions = new ArrayList();
+        answerPermutation = new ArrayList();
     }
 
     // Update is called once per frame
@@ -78,7 +83,7 @@ public class Quiz : MonoBehaviour
         {
             newAnswer = true;
             int newQuestionIndex = (int)Math.Round((db.categories[categoryIndex].questions.Length - 1) * UnityEngine.Random.value);
-            while(newQuestionIndex == questionIndex)
+            while(answeredQuestions.Contains(newQuestionIndex))
             {
                 newQuestionIndex = (int)Math.Round((db.categories[categoryIndex].questions.Length - 1) * UnityEngine.Random.value);
             }
@@ -89,6 +94,15 @@ public class Quiz : MonoBehaviour
             TextMeshPro questionTextComp = questionObj.GetComponent<TextMeshPro>();
             questionTextComp.text = currentQuestion.questionText;
 
+            answerPermutation.Clear();
+            answerPermutation.Add(0);
+            for(int i = 0; i < currentQuestion.wrongAnswers.Length; ++i)
+            {
+                answerPermutation.Add(i + 1);
+            }
+            System.Random r = new System.Random();
+            answerPermutation = ShuffleList<int>(answerPermutation);
+
             questionStartTime = currentTime;
             newQuestion = false;
         }
@@ -96,24 +110,19 @@ public class Quiz : MonoBehaviour
         if (newAnswer)
         {
             answerStartTime = currentTime;
-            int newAnswerIndex = (int)Math.Round(UnityEngine.Random.value * (currentQuestion.wrongAnswers.Length -1));
-            while (newAnswerIndex == answerIndex)
-            {
-                newAnswerIndex = (int)Math.Round(UnityEngine.Random.value * (currentQuestion.wrongAnswers.Length - 1));
-            }
-            answerIndex = newAnswerIndex;
+            answerIndex += 1;
 
             newAnswer = false;
         }
 
         string answerText;
-        if(answerIndex == 0)
+        if((int)answerPermutation[answerIndex] == 0)
         {
             answerText = currentQuestion.rightAnswer;
         }
         else
         {
-            answerText = currentQuestion.wrongAnswers[answerIndex - 1];
+            answerText = currentQuestion.wrongAnswers[(int)answerPermutation[answerIndex] - 1];
         }
 
         answerAObj.GetComponent<TextMeshPro>().text = answerText;
@@ -131,6 +140,12 @@ public class Quiz : MonoBehaviour
                 teacherScore += 1;
                 teacherScoreObj.GetComponent<TextMeshPro>().text = teacherScore.ToString();
             }
+
+            answeredQuestions.Add(questionIndex);
+            if(answeredQuestions.Count >= db.categories[categoryIndex].questions.Length)
+            {
+                answeredQuestions.Clear();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -145,6 +160,12 @@ public class Quiz : MonoBehaviour
                 studentScore += 1;
                 studentScoreObj.GetComponent<TextMeshPro>().text = studentScore.ToString();
             }
+            answeredQuestions.Add(questionIndex);
+            if (answeredQuestions.Count >= db.categories[categoryIndex].questions.Length)
+            {
+                answeredQuestions.Clear();
+            }
+
         }
 
         if (currentTime - answerStartTime > secondsPerAnswer)
@@ -168,4 +189,21 @@ public class Quiz : MonoBehaviour
             }
         }
     }
+
+    private ArrayList ShuffleList<E>(ArrayList inputList)
+    {
+        ArrayList randomList = new ArrayList();
+
+        System.Random r = new System.Random();
+        int randomIndex = 0;
+        while (inputList.Count > 0)
+        {
+            randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+            randomList.Add(inputList[randomIndex]); //add it to the new, random list
+            inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+        }
+
+        return randomList; //return the new random list
+    }
+
 }

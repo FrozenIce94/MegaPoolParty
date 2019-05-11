@@ -46,7 +46,17 @@
 					"questionText" : "Frage2?",
 					"rightAnswer" : "Richtig",
 					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				},				{
+					"questionText" : "Frage3?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				},
+				{
+					"questionText" : "Frage4?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
 				}
+
 			]
 		}
 	]
