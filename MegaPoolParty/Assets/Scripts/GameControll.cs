@@ -7,10 +7,10 @@ public class GameControll : MonoBehaviour
    public float paddleSpeed = 1f;
 
     public GameObject leftPanel;
-    private Vector3 playerPosLeft = new Vector3(-7.5f, 0f, 0);
+    private Vector3 playerPosLeft = new Vector3(-7f, 0f, 0);
 
     public GameObject rightPanel;
-    private Vector3 playerPosRight = new Vector3(7.5f, 0f, 0);
+    private Vector3 playerPosRight = new Vector3(7f, 0f, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +25,16 @@ public class GameControll : MonoBehaviour
     private void Controll1()
     {
 
-        float zPos = leftPanel.transform.position.z + (Input.GetAxis("Horizontal") * paddleSpeed);
+        float zPos = leftPanel.transform.position.z + (Input.GetAxis("StudentV") * -paddleSpeed);
         playerPosLeft = new Vector3(-7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
         leftPanel.transform.position = playerPosLeft;
+
+        
+        zPos = rightPanel.transform.position.z + (Input.GetAxis("LehrerH") * -paddleSpeed);
+        playerPosRight = new Vector3(-7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
+        rightPanel.transform.position = playerPosRight;
+
+        //LehrerV
 
 
         float ArrowInput = 0;

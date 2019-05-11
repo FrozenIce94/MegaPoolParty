@@ -9,7 +9,8 @@ public class DeadZone : MonoBehaviour {
 	void OnTriggerEnter (Collider col)
 	{
 	
-		Debug.Log ("Kollidiere" + isLinks);
+		Debug.Log ("Kollidiere "+this.gameObject.name+":" +col.gameObject.name +" "+ isLinks);
+       // Debug.Break();
 		GM.instance.Score(isLinks);
 	}
 

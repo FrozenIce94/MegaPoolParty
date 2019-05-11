@@ -16,10 +16,10 @@ public class Ball : MonoBehaviour {
 
     void LateUpdate()
     {
-        if (transform.position.y>0.21)
-        {
+        //if (transform.position.y>0.21)
+       // {
             transform.position = new Vector3(transform.position.x, 0.21f, transform.position.z);
-        }
+       // }
     }
 
     void FixedUpdate()

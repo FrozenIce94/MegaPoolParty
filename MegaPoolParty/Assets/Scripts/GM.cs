@@ -128,8 +128,8 @@ public class GM : MonoBehaviour {
 
 	private void Neustart()
 	{
-        //Application.LoadLevel (0);
-        gameM.EndMinigame(true);
+        Application.LoadLevel (0);
+        //gameM.EndMinigame(true);
 
     }
 
