@@ -19,6 +19,15 @@ public class Swimmer : MonoBehaviour
 
     private Rigidbody rigidBody;
     private bool left = false;
+
+
+    bool endRequested = false;
+    bool timerRegistered = false;
+    public void requestEnd()
+    {
+        endRequested = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +37,12 @@ public class Swimmer : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!timerRegistered)
+        {
+            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Swimming);
+        }
+        if (!timerRegistered)
+            return;
         rigidBody.velocity = new Vector3(0, 0, 0);
 
         var prefix = (IsStudent ? "Student" : "Lehrer");
@@ -50,6 +65,10 @@ public class Swimmer : MonoBehaviour
         if(rigidBody.position.x >= finish)
         {
             gameManager.EndMinigame(IsStudent);
+        }
+        if (endRequested)
+        {
+            gameManager.EndMinigame(null);
         }
     }
 }

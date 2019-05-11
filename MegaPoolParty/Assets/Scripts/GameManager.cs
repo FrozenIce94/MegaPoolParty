@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
 
     //Static Vars
     [Header("Common")]
-    public bool gamerunning;
+    public static bool gamerunning;
+
+    public static PauseMenu pauseMenu;
 
     [Header("CheatModus MainMenu")]
     public int CheatNextGame = 0;
@@ -153,6 +155,9 @@ public class GameManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// pausiere timer
+    /// </summary>
     public bool PauseTimer()
     {
         if (timer == null)
@@ -161,6 +166,9 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Setzt den timer fort
+    /// </summary>
     public bool ResumeTimer()
     {
         if (timer == null)
@@ -169,6 +177,9 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Startet den timer mit callback
+    /// </summary>
     public bool StartTimer(StartCounter.OnTimerFinished callback, GameManager.Games game)
     {
         if (timer == null)
@@ -177,12 +188,20 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Stoppt den timer vorzeitig
+    /// </summary>
     public bool StopTimer()
     {
         if (timer == null)
             return false;
         timer.StopGame();
         return true;
+    }
+
+    public void SetPauseMenu(PauseMenu pauseMenu)
+    {
+        GameManager.pauseMenu = pauseMenu;
     }
 
     #endregion
