@@ -1,0 +1,53 @@
+{
+	"categories" :
+	[
+		{
+			"categoryName" : "Erdkunde",
+			"questions":
+			[
+				{
+					"questionText" : "Welches Land grenzt nicht an Deutschland?",
+					"rightAnswer" : "Schweden",
+					"wrongAnswers" : ["Italien", "Polen", "Östereich"]
+				},
+				{
+					"questionText" : "Was ist die Hauptstadt von Deutschland?",
+					"rightAnswer" : "Berlin",
+					"wrongAnswers" : ["Bremen", "Muenchen", "Bonn"]
+				}
+			]
+		},
+		{
+			"categoryName" : "Mathe",
+			"questions":
+			[
+				{
+					"questionText" : "Was ist die Wurzel von 9",
+					"rightAnswer" : "3",
+					"wrongAnswers" : ["7", "18", "2"]
+				},
+				{
+					"questionText" : "7 x 8 =",
+					"rightAnswer" : "56",
+					"wrongAnswers" : ["51", "65", "73"]
+				}
+			]
+		},
+		{
+			"categoryName" : "Sprachen",
+			"questions":
+			[
+				{
+					"questionText" : "Frage1?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				},
+				{
+					"questionText" : "Frage2?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				}
+			]
+		}
+	]
+}
