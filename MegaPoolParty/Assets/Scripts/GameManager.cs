@@ -76,15 +76,18 @@ public class GameManager : MonoBehaviour
     /// Startet ein neues Spiel sofern keins aktiv ist
     /// </summary>
     /// <param name="winner">Schüler = true, Lehrer = false</param>
-    public void EndMinigame(bool winner)
+    public void EndMinigame(bool? winner)
     {
-
-        if (winner)
+        if (winner.HasValue)
         {
-            currentfield += 1;
-        } else
-        {
-            currentfield -= 1;
+            if (winner.Value)
+            {
+                currentfield += 1;
+            }
+            else
+            {
+                currentfield -= 1;
+            }
         }
 
         DebugCurrentData();
