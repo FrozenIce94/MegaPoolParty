@@ -15,6 +15,8 @@ public class GM : MonoBehaviour {
 	public Text Text_Sieg;
 	public Text Text_Start;
 
+    private GameManager gameM;
+
     public static bool hasBall;
 	
 		// Use this for initialization
@@ -27,10 +29,11 @@ public class GM : MonoBehaviour {
         }
         else if (instance != this)
             Destroy(gameObject);
-		
-		//Setup();
-		
-	}
+
+        //Setup();
+        gameM = GetComponent<GameManager>();
+
+    }
 
    void Update()
     {
@@ -125,8 +128,10 @@ public class GM : MonoBehaviour {
 
 	private void Neustart()
 	{
-		Application.LoadLevel (0);
-	}
+        //Application.LoadLevel (0);
+        gameM.EndMinigame(true);
+
+    }
 
 	private int CheckSieg()
 	{
