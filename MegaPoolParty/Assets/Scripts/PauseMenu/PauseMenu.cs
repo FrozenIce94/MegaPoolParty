@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetAxisRaw("Cancel") == 1 || Input.GetAxisRaw("Submit") == 1 ) && m_isAxisInUse == false && pausable)
+        if ((Input.GetAxisRaw("Cancel") == 1) && m_isAxisInUse == false && pausable)
         {
             if (GameIsPaused)
             {
@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
             m_isAxisInUse = true;
         }
-        if (Input.GetAxisRaw("Cancel") == 0 && Input.GetAxisRaw("Submit") == 0)
+        if (Input.GetAxisRaw("Cancel") == 0)
         {
             m_isAxisInUse = false;
         }

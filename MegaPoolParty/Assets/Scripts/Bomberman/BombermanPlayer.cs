@@ -160,6 +160,7 @@ public class BombermanPlayer : MonoBehaviour
 
     public void Hit()
     {
+        gameManager.StopTimer();
         //Only one can win
         if (controllerInstance.IsFinished) return;
         controllerInstance.IsFinished = true;
