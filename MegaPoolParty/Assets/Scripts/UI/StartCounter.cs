@@ -107,6 +107,7 @@ public class StartCounter : MonoBehaviour
     {
         timerFinishedCallback = null;
         timerActive = false;
+        timer.SetActive(false);
     }
 
     void StartCountdown()
