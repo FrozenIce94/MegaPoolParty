@@ -22,6 +22,13 @@ public class BombermanController : MonoBehaviour
     public bool generateRandomLevel = false;
     public TextAsset levelGenFile;
 
+    bool endRequested = false;
+    public bool timerRegistered = false;
+    public void requestEnd()
+    {
+        endRequested = true;
+    }
+
     public List<Vector3> VectorList
     {
         get
@@ -146,7 +153,14 @@ public class BombermanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C) && generateRandomLevel)
+        if (!timerRegistered)
+        {
+            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Swimming);
+        }
+        if (!timerRegistered)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.C) && generateRandomLevel)
         {
             foreach (var block in blocks.ToList())
             {
@@ -179,7 +193,13 @@ public class BombermanController : MonoBehaviour
             if (File.Exists(fileName)) File.AppendAllText(fileName, Environment.NewLine);
             File.AppendAllText(fileName, sb.ToString());
         }
-        
+
+        if (endRequested)
+        {
+            IsFinished = true;
+            GetComponent<GameManager>().StopTimer();
+            GetComponent<GameManager>().EndMinigame(null);
+        }
     }
 
     internal Vector3 GetNearestPositionInGrid(Vector3 position)

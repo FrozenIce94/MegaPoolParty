@@ -41,7 +41,7 @@ public class StartCounter : MonoBehaviour
     {
         if (showInstructions)
         {
-            if (Input.GetAxisRaw("Jump") == 1 && m_isAxisInUse == false)
+            if ((Input.GetAxisRaw("Jump") == 1 || Input.GetAxisRaw("Submit") == 1) && m_isAxisInUse == false)
             {
                 HideInstructions();
                 StartCountdown();
@@ -50,7 +50,7 @@ public class StartCounter : MonoBehaviour
             }
         }
 
-        if (Input.GetAxisRaw("Jump") == 0)
+        if (Input.GetAxisRaw("Jump") == 0 && Input.GetAxisRaw("Submit") == 0)
         {
             m_isAxisInUse = false;
         }
