@@ -138,9 +138,6 @@ public class GameManager : MonoBehaviour
             case Games.pong:
                 SceneManager.LoadScene(3, LoadSceneMode.Additive);
                 break;
-            case Games.Quiz:
-                SceneManager.LoadScene(4, LoadSceneMode.Additive);
-                break;
         }
 
         Debug.Log("GameManager: Spiel " + game.ToString() + " gestartet");
@@ -208,7 +205,6 @@ public class GameManager : MonoBehaviour
         Bomberman = 1,
         Swimming = 2,
         pong = 3,
-        Quiz = 4,
     }
 
     #endregion
