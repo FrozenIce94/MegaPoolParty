@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private static int playfield;
     private static Games lastGame;
 
+    public PauseMenu pm;
     #endregion
     #region "Public Methods"
 
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         if (gamerunning) return;
 
-        int gameCounts = 3;
+        int gameCounts = Enum.GetNames(typeof(Games)).Length; ;
         System.Random random = new System.Random();
 
         int nextGame = 0;
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
     /// <param name="winner">Schüler = true, Lehrer = false</param>
     public void EndMinigame(bool winner)
     {
+
         if (winner)
         {
             currentfield += 1;
@@ -69,6 +71,8 @@ public class GameManager : MonoBehaviour
         {
             currentfield -= 1;
         }
+
+        DebugCurrentData();
 
         CheckGameEnd();
     }
@@ -88,8 +92,7 @@ public class GameManager : MonoBehaviour
     public void DebugCurrentData()
     {
         Debug.Log("GameManager: ----- Start DebugPrint -----");
-        Debug.Log("GameManager: Playfields: " + playfield);
-        Debug.Log("GameManager: Startfeld: " + currentfield);
+        Debug.Log("GameManager: Aktuelles Feld: " + currentfield);
         Debug.Log("GameManager: Game Running: " + gamerunning);
         Debug.Log("GameManager: ----- End DebugPrint -----");
     }
@@ -108,17 +111,9 @@ public class GameManager : MonoBehaviour
             case Games.None:
                 StartRandomGame();
                 break;
-            case Games.Pong:
-                //Hier Szene Starten
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
-                break;
             case Games.Bomberman:
                 SceneManager.LoadScene(1, LoadSceneMode.Additive);
-                break;
-            case Games.Quiz:
-                //Hier Szene Starten
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
-                break;
+                break; 
             case Games.Swimming:
                 SceneManager.LoadScene(2, LoadSceneMode.Additive);
                 break;
@@ -144,7 +139,7 @@ public class GameManager : MonoBehaviour
             ShowEndScreen(true);
         }
 
-        ShowHub();
+        CloseSceneAndShowHub();
     }
 
     /// <summary>
@@ -153,15 +148,18 @@ public class GameManager : MonoBehaviour
     /// <param name="winner">Schüler = true, Lehrer = false</param>
     private void ShowEndScreen(bool winner)
     {
-        //Hier End Screen aufrufen
-        //Parameter der Gewinner
+        pm.ShowEndScreen(winner);
     }
 
     /// <summary>
     /// zeigt den Hub an
     /// </summary>
-    private void ShowHub()
+    private void CloseSceneAndShowHub()
     {
+        SceneManager.UnloadSceneAsync((int)lastGame);
+        StartRandomGame();
+
+        
         //Hier Hub aufrufen mit Parameter für Änderung? oder ruft der Hub das auf
     }
 
@@ -171,10 +169,8 @@ public class GameManager : MonoBehaviour
     private enum Games
     {
         None = 0,
-        Pong = 1,
-        Bomberman = 2,
-        Quiz = 3,
-        Swimming = 4,
+        Bomberman = 1,
+        Swimming = 2
     }
 
     #endregion

@@ -5,8 +5,10 @@ using UnityEngine;
 public class Swimmer : MonoBehaviour
 {
 
-    private bool hold = false;
-    private int finish = 100;
+    private int finish = 85;
+
+    [Header("CheatModus")]
+    public int Step = 5;
 
     [Header("Common")]
     public bool IsStudent;
@@ -28,14 +30,9 @@ public class Swimmer : MonoBehaviour
     {
         rigidBody.velocity = new Vector3(0, 0, 0);
         //Move in the XZ plane.
-        if (Input.GetKey(keyPressing) && !hold)
+        if (Input.GetKeyDown(keyPressing))
         {
-            hold = true;
-            rigidBody.velocity = new Vector3(5, 0, 0);          
-            Debug.Log("Swimmer (IsStudent = " + IsStudent + "): Move X");
-        } else {
-            hold = false;
-            Debug.Log("Swimmer (IsStudent = " + IsStudent + "): Hold = False");
+            rigidBody.velocity = new Vector3(Step, 0, 0);          
         }
 
         CheckGameEnd();
@@ -43,9 +40,8 @@ public class Swimmer : MonoBehaviour
 
     public void CheckGameEnd()
     {
-        if(rigidBody.velocity.x >= finish)
+        if(rigidBody.position.x >= finish)
         {
-            Time.timeScale = 0;
             gameManager.EndMinigame(IsStudent);
         }
     }
