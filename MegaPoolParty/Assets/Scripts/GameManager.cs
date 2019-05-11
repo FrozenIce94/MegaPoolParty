@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour
     //Static Vars
     [Header("Common")]
     public static bool gamerunning;
-
     public static PauseMenu pauseMenu;
+
+    [Header("Music")]
+    public static AudioSource SoftMusic;
+    public static AudioSource HardMusic;
 
     [Header("CheatModus MainMenu")]
     public int CheatNextGame = 0;
@@ -206,6 +209,28 @@ public class GameManager : MonoBehaviour
 
     #endregion
     #region "Private Methods"
+    /// <summary>
+    /// Spielt ein Lied ab
+    /// </summary>
+    /// <param name="hard">Ist es hart, dann hart</param>
+    private void PlayMusic(bool hard)
+    {
+        if(hard)
+        {
+            if (HardMusic.isPlaying) return;
+            if (SoftMusic.isPlaying)
+                SoftMusic.Stop();
+            HardMusic.Play();
+        }
+        else
+        {
+            if (SoftMusic.isPlaying) return;
+            if (HardMusic.isPlaying)
+                HardMusic.Stop();
+            SoftMusic.Play();
+        }
+    }
+
 
     /// <summary>
     /// Startet ein Spiel
@@ -219,15 +244,19 @@ public class GameManager : MonoBehaviour
                 StartRandomGame();
                 break;
             case Games.Bomberman:
+                PlayMusic(true);
                 SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 break; 
             case Games.Swimming:
+                PlayMusic(true);
                 SceneManager.LoadScene(2, LoadSceneMode.Additive);
                 break;
             case Games.Pong:
+                PlayMusic(false);
                 SceneManager.LoadScene(3, LoadSceneMode.Additive);
                 break;
             case Games.Quiz:
+                PlayMusic(false);
                 SceneManager.LoadScene(4, LoadSceneMode.Additive);
                 break;
         }
