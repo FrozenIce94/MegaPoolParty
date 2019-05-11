@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         playfield = 7;
         currentfield = 4;
+        lastfield = 4;
         lastGame = Games.None;
         gamerunning = false;
         gamefinished = false;
@@ -248,12 +249,13 @@ public class GameManager : MonoBehaviour
     private void CloseSceneAndShowHub()
     {
         SceneManager.UnloadSceneAsync((int)lastGame);
-        StartRandomGame();
-        //SceneManager.LoadScene(5, LoadSceneMode.Additive);
-        //GameObject tempObject = GameObject.Find("CanvasHub");
-        //tempObject.SendMessage("InitHub", new KeyValuePair<int, int>(lastfield, currentfield), SendMessageOptions.DontRequireReceiver);
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
 
+    public KeyValuePair<int, int> GetPositions()
+    {
+        return new KeyValuePair<int, int>(lastfield, currentfield);
+    }
     #endregion
     #region "Enum"
 

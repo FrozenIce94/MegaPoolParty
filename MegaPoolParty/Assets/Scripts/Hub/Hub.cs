@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 public class Hub : MonoBehaviour
 {
 
-    private Rigidbody  player;
+    public Rigidbody player;
     public GameManager gm;
 
     private Dictionary<int, Vector3> positions = new Dictionary<int, Vector3>();
@@ -21,6 +21,8 @@ public class Hub : MonoBehaviour
         positions.Add(5, new Vector3(26.63f, -12.8f, -4.19f));
         positions.Add(6, new Vector3(40.32f, -12.8f, -8.33f));
         positions.Add(7, new Vector3(53.97f, -12.8f, -12.83f));
+
+        InitHub(gm.GetPositions());
     }
 
     public void InitHub(KeyValuePair<int, int> pos)
