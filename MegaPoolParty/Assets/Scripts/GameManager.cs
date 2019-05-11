@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     private static int playfield;
     private static Games lastGame;
-    private static int currentfield;
+    private static int currentfield, lastfield;
 
     private static bool gamefinished;
 
@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
     {
         if (winner.HasValue)
         {
+            lastfield = currentfield;
+
             if (winner.Value)
             {
                 currentfield += 1;
@@ -96,6 +98,17 @@ public class GameManager : MonoBehaviour
         DebugCurrentData();
 
         CheckGameEnd();
+    }
+
+    /// <summary>
+    /// Schließt den Hub und startet das nächste Spiel
+    /// </summary>
+    /// <param name="winner">Schüler = true, Lehrer = false</param>
+    public void EndHub()
+    {
+        Debug.Log("GameManager: Hub beendet");
+        SceneManager.UnloadSceneAsync(5);
+        StartRandomGame();
     }
 
     /// <summary>
@@ -223,19 +236,6 @@ public class GameManager : MonoBehaviour
     /// <param name="winner">Schüler = true, Lehrer = false</param>
     private void ShowEndScreen(bool winner)
     {
-
-        //Scene menu = SceneManager.GetSceneAt(0);
-        //GameObject[] objects = menu.GetRootGameObjects();
-        //Canvas cv;
-        //for (int i = 0; i < objects.Length - 1; i++)
-        //{
-        //    //if(objects[i].name == "UICanvas")
-        //    //{
-        //    //    (objects[i].SendMessage(""));
-        //    //}
-        //}
-
-        //pm.ShowEndScreen(winner);
         if (gamefinished) return;
         gamefinished = true;
         GameObject tempObject = GameObject.Find("UICanvas");
@@ -249,9 +249,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync((int)lastGame);
         StartRandomGame();
-
-        
-        //Hier Hub aufrufen mit Parameter für Änderung? oder ruft der Hub das auf
+        //SceneManager.LoadScene(5, LoadSceneMode.Additive);
+        //GameObject tempObject = GameObject.Find("CanvasHub");
+        //tempObject.SendMessage("InitHub", new KeyValuePair<int, int>(lastfield, currentfield), SendMessageOptions.DontRequireReceiver);
     }
 
     #endregion
