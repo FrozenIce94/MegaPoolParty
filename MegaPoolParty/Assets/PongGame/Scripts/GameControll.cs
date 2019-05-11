@@ -4,16 +4,50 @@ using UnityEngine;
 
 public class GameControll : MonoBehaviour
 {
-   public GameObject leftPanel;
+   public float paddleSpeed = 1f;
+
+    public GameObject leftPanel;
+    private Vector3 playerPosLeft = new Vector3(-7.5f, 0f, 0);
+
     public GameObject rightPanel;
+    private Vector3 playerPosRight = new Vector3(7.5f, 0f, 0);
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
+    private void Update()
+    {
+        Controll1();
+    }
+
+    private void Controll1()
+    {
+
+        float zPos = leftPanel.transform.position.z + (Input.GetAxis("Horizontal") * paddleSpeed);
+        playerPosLeft = new Vector3(-7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
+        leftPanel.transform.position = playerPosLeft;
+
+
+        float ArrowInput = 0;
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            ArrowInput = 0.1f;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            ArrowInput = -0.1f;
+        }
+            zPos = rightPanel.transform.position.z + (ArrowInput * paddleSpeed);
+        playerPosRight = new Vector3(7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
+        rightPanel.transform.position = playerPosRight;
+
+    }
+
+
     // Update is called once per frame
-    void Update()
+    void Controll2()
     {
         float speed = 0.03f;
         float limittop = 4;
