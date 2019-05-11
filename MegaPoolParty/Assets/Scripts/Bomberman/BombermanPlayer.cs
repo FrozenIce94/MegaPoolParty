@@ -135,6 +135,9 @@ public class BombermanPlayer : MonoBehaviour
 
     public void Hit()
     {
+        //Only one can win
+        if (controllerInstance.IsFinished) return;
+        controllerInstance.IsFinished = true;
         gameManager.EndMinigame(!IsStudent);
     }
 
@@ -144,6 +147,7 @@ public class BombermanPlayer : MonoBehaviour
     {
         //No bombs, no placing
         if (bombAmount <= 0) return;
+
         bombAmount -= 1;
         RefreshBombText();
 
@@ -151,9 +155,12 @@ public class BombermanPlayer : MonoBehaviour
         var placeVector =  controllerInstance.GetNearestPositionInGrid(transform.position);
         var bombObj = Instantiate(bombPrefab, 
                                   new Vector3(placeVector.x, 
-                                              bombPrefab.transform.localScale.y * 10,
+                                              bombPrefab.transform.localScale.y * 0.5f,
                                               placeVector.z),
                                   Quaternion.Euler(Vector3.zero), controllerInstance.transform);
+
+
+
         var bombCollider = bombObj.GetComponent<Collider>();
         currentBombColliders.Add(bombCollider);
         Physics.IgnoreCollision(bombCollider, playerCollider);
