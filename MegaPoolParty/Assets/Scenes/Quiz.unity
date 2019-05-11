@@ -685,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamerunning: 0
   CheatNextGame: 0
 --- !u!1 &803364194
 GameObject:
@@ -1199,7 +1198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1383538882}
   - component: {fileID: 1383538881}
-  - component: {fileID: 1383538880}
   - component: {fileID: 1383538883}
   m_Layer: 0
   m_Name: Main Camera
@@ -1208,14 +1206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1383538880
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383538879}
-  m_Enabled: 1
 --- !u!20 &1383538881
 Camera:
   m_ObjectHideFlags: 0
@@ -1659,7 +1649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamerunning: 0
   CheatNextGame: 0
 --- !u!114 &1762097265
 MonoBehaviour:
