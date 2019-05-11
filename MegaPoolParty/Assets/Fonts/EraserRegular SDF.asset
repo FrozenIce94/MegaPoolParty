@@ -1724,19 +1724,19 @@ MonoBehaviour:
     m_Height: 746
   - m_X: 495
     m_Y: 182
-    m_Width: 528
+    m_Width: 35
     m_Height: 3
-  - m_X: 530
-    m_Y: 182
-    m_Width: 493
-    m_Height: 841
-  - m_X: 535
-    m_Y: 86
-    m_Width: 488
-    m_Height: 5
   - m_X: 581
     m_Y: 86
     m_Width: 442
+    m_Height: 96
+  - m_X: 597
+    m_Y: 271
+    m_Width: 426
+    m_Height: 752
+  - m_X: 602
+    m_Y: 86
+    m_Width: 421
     m_Height: 937
   - m_X: 611
     m_Y: 0
