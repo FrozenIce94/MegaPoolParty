@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     //Static Vars
     [Header("Common")]
     public bool gamerunning;
-    public int currentfield;
 
     [Header("CheatModus MainMenu")]
     public int CheatNextGame = 0;
@@ -19,8 +18,9 @@ public class GameManager : MonoBehaviour
 
     private static int playfield;
     private static Games lastGame;
+    private static int currentfield;
 
-    public static PauseMenu pm;
+    private static bool gamefinished;
     #endregion
     #region "Public Methods"
 
@@ -30,9 +30,10 @@ public class GameManager : MonoBehaviour
     public void InitializeGame()
     {
         playfield = 7;
-        currentfield = 4;
+        currentfield = 6;
         lastGame = Games.None;
         gamerunning = false;
+        gamefinished = false;
 
         Debug.Log("GameManager: ----- Start Init -----");
         Debug.Log("GameManager: Playfields: " + playfield);
@@ -154,13 +155,17 @@ public class GameManager : MonoBehaviour
         if(currentfield == 0)
         {
             Debug.Log("GameManager: Lehrer gewonnen");
+            SceneManager.UnloadSceneAsync((int)lastGame);
             ShowEndScreen(false);
+            return;
         }
 
         if(currentfield == 7)
         {
             Debug.Log("GameManager: Schüler gewonnen");
+            SceneManager.UnloadSceneAsync((int)lastGame);
             ShowEndScreen(true);
+            return;
         }
 
         CloseSceneAndShowHub();
@@ -185,6 +190,10 @@ public class GameManager : MonoBehaviour
         //}
 
         //pm.ShowEndScreen(winner);
+        if (gamefinished) return;
+        gamefinished = true;
+        GameObject tempObject = GameObject.Find("UICanvas");
+        tempObject.SendMessage("ShowEndScreen", winner, SendMessageOptions.DontRequireReceiver);
     }
 
     /// <summary>

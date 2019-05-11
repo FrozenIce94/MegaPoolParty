@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject mainMenu;
     public GameObject endScreen;
+
+    public TextMeshProUGUI endtext;
 
     /// <summary>
     /// Start der Szene
@@ -97,18 +100,19 @@ public class PauseMenu : MonoBehaviour
     public void ShowEndScreen(bool winner)
     {
         pauseMenu.SetActive(false);
-        endScreen.SetActive(true);
-        Time.timeScale = 0;
 
-        Text endtext = endScreen.GetComponent<Text>();
+        if(endtext != null)
+        {
+            if (winner)
+            {
+                endtext.text = "Der Schüler hat gewonnen!";
+            }
+            else
+            {
+                endtext.text = "Der Lehrer hat gewonnen!";
+            }
+        } 
         endScreen.SetActive(true);
-
-        if (winner)
-        {
-            endtext.text = "Der Schüler hat gewonnen!";
-        } else
-        {
-            endtext.text = "Der Lehrer hat gewonnen!";
-        }
+        Time.timeScale = 1;
     }
 }
