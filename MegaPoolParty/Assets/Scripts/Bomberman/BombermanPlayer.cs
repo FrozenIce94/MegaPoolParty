@@ -87,7 +87,16 @@ public class BombermanPlayer : MonoBehaviour
 
     void ProcessInput()
     {
-        
+        //StudentV -Input.GetAxis("StudentV")
+        //StudentH - Input.GetAxis("StudentH")
+        //Fire1_S - Input.GetButtonDown("Fire1_S") 
+        //Fire2_S - Input.GetButtonDown("Fire2_S")
+
+        //LehrerV - Input.GetAxis("LehrerV")
+        //LehrerH - Input.GetAxis("LehrerH")
+        //Fire1_L - Input.GetButtonDown("Fire1_L")
+        //Fire2_L  - Input.GetButtonDown("Fire2_L")
+
         //Stop
         rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
 
@@ -102,32 +111,39 @@ public class BombermanPlayer : MonoBehaviour
             }
         }
 
+        var prefix = (IsStudent ? "Student" : "Lehrer");
 
-
+        var horizontalVelocity = Input.GetAxis($"{prefix}H");
         //Move in the XZ plane.
-        if (Input.GetKey(keyRight))
-        {   rigidBody.velocity = new Vector3(movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
+        if (horizontalVelocity > 0)
+        {
+            
+            rigidBody.velocity = new Vector3(horizontalVelocity * movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
             targetModelRotation = Quaternion.Euler(0, 180, 0);
         }
 
 
-        if (Input.GetKey(keyLeft))
-        { rigidBody.velocity = new Vector3(-movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
+        if (horizontalVelocity < 0)
+        { rigidBody.velocity = new Vector3(horizontalVelocity * movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
             targetModelRotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (Input.GetKey(keyUp))
-        { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, movingVelocity);
+
+        var verticalVelocity = Input.GetAxis($"{prefix}V") * -1;
+
+        if (verticalVelocity > 0)
+        { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, verticalVelocity * movingVelocity);
             targetModelRotation = Quaternion.Euler(0, 90, 0);
             
         }
 
-        if (Input.GetKey(keyDown))
-        { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -movingVelocity);
+        if (verticalVelocity < 0)
+        { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, verticalVelocity  * movingVelocity);
             targetModelRotation = Quaternion.Euler(0, 270, 0);
         }
 
-        if (Input.GetKeyDown(placeBomb))
+
+        if (Input.GetButtonDown((IsStudent ? "Fire1_S" : "Fire1_L")))
         {
             DoPlaceBomb();
         }
