@@ -1208,7 +1208,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1361277810}
   - component: {fileID: 1361277809}
-  - component: {fileID: 1361277808}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1216,14 +1215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1361277808
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361277807}
-  m_Enabled: 1
 --- !u!20 &1361277809
 Camera:
   m_ObjectHideFlags: 0
@@ -1767,7 +1758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094688966}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0389812, y: -11.65612, z: 0.04738949}
+  m_LocalPosition: {x: 0, y: -3.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1863,7 +1854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamerunning: 0
   CheatNextGame: 0
 --- !u!1 &2131850635
 GameObject:
@@ -2252,6 +2242,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: panel1
       objectReference: {fileID: 0}
+    - target: {fileID: 6381142232587129651, guid: b657451d41225c24585628fb2b8f1884,
+        type: 3}
+      propertyPath: time
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6381142233573007904, guid: b657451d41225c24585628fb2b8f1884,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2306,11 +2301,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381142232587129651, guid: b657451d41225c24585628fb2b8f1884,
-        type: 3}
-      propertyPath: time
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b657451d41225c24585628fb2b8f1884, type: 3}
