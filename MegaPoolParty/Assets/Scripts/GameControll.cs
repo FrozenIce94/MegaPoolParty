@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class GameControll : MonoBehaviour
 {
-   public float paddleSpeed = 1f;
+
+    //StudentV -Input.GetAxis("StudentV")
+    //StudentH - Input.GetAxis("StudentH")
+    //Fire1_S - Input.GetButtonDown("Fire1_S") 
+    //Fire2_S - Input.GetButtonDown("Fire2_S")
+
+    //LehrerV - Input.GetAxis("LehrerV")
+    //LehrerH - Input.GetAxis("LehrerH")
+    //Fire1_L - Input.GetButtonDown("Fire1_L")
+    //Fire2_L  - Input.GetButtonDown("Fire2_L")
+
+    public float paddleSpeed = 1f;
 
     public GameObject leftPanel;
     private Vector3 playerPosLeft = new Vector3(-7f, 0f, 0);
@@ -29,14 +40,14 @@ public class GameControll : MonoBehaviour
         playerPosLeft = new Vector3(-7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
         leftPanel.transform.position = playerPosLeft;
 
-        
-        zPos = rightPanel.transform.position.z + (Input.GetAxis("LehrerH") * -paddleSpeed);
-        playerPosRight = new Vector3(-7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
+       
+        float zPosL = rightPanel.transform.position.z + (Input.GetAxis("LehrerV") * -paddleSpeed);
+        playerPosRight = new Vector3(7.5f, 0, Mathf.Clamp(zPosL, -4f, 4f));
         rightPanel.transform.position = playerPosRight;
 
         //LehrerV
 
-
+        /*
         float ArrowInput = 0;
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -49,7 +60,7 @@ public class GameControll : MonoBehaviour
             zPos = rightPanel.transform.position.z + (ArrowInput * paddleSpeed);
         playerPosRight = new Vector3(7.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
         rightPanel.transform.position = playerPosRight;
-
+        */
     }
 
 

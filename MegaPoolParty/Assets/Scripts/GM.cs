@@ -44,7 +44,7 @@ public class GM : MonoBehaviour {
             return;
         }
    
-        if ((Input.GetButtonDown("Fire1") || Input.GetKey(KeyCode.Space)) && hasBall == false)
+        if ((Input.GetButtonDown("Fire1_S") || Input.GetButtonDown("Fire1_L") || Input.GetKey(KeyCode.Space)) && hasBall == false)
         {
             Debug.Log("new Ball");
             hasBall = true;
