@@ -18,14 +18,15 @@ public class GM : MonoBehaviour {
     private GameManager gameM;
 
     public static bool hasBall;
-	
-		// Use this for initialization
-	void Awake () 
+    private bool firstBall;
+    // Use this for initialization
+    void Awake () 
 	{
         if (instance == null)
         {
             instance = this;
             hasBall = false;
+            firstBall = true;
         }
         else if (instance != this)
             Destroy(gameObject);
@@ -46,11 +47,9 @@ public class GM : MonoBehaviour {
    
         if ((Input.GetButtonDown("Fire1_S") || Input.GetButtonDown("Fire1_L") || Input.GetKey(KeyCode.Space)) && hasBall == false)
         {
-<<<<<<< HEAD
             if (!firstBall) { return; }
             firstBall = false;
-=======
->>>>>>> 1cb25a95643d2738fff48cb796d692f19b711f6e
+
             Debug.Log("new Ball");
             hasBall = true;
              Setup();
