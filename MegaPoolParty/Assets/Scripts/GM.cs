@@ -2,26 +2,32 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class GM : MonoBehaviour {
-	
+public class GM : MonoBehaviour
+{
 
-	public static GM instance = null;
-	public GameObject Ball;
-	private GameObject cloneBall;
-	private int L_Score=0;
-	private int R_Score=0;
-	public int SiegScore = 10;
-	public Text Text_Score;
-	public Text Text_Sieg;
-	public Text Text_Start;
+
+    public static GM instance = null;
+    public GameObject Ball;
+    private GameObject cloneBall;
+    private int L_Score = 0;
+    private int R_Score = 0;
+    public int SiegScore = 10;
+    public Text Text_Score;
+    public Text Text_Sieg;
+    public Text Text_Start;
+    public Text Text_Count;
 
     private GameManager gameM;
 
     public static bool hasBall;
-    private bool firstBall;
+
+    public bool firstBall;
+
+    public float Countdowntime;
+
     // Use this for initialization
-    void Awake () 
-	{
+    void Awake()
+    {
         if (instance == null)
         {
             instance = this;
@@ -36,36 +42,45 @@ public class GM : MonoBehaviour {
 
     }
 
-   void Update()
+    void Update()
     {
         bool StartInput = false;
 
-        if (Text_Sieg.enabled==true)
+        if (Text_Sieg.enabled == true)
         {
             return;
         }
-   
+
         if ((Input.GetButtonDown("Fire1_S") || Input.GetButtonDown("Fire1_L") || Input.GetKey(KeyCode.Space)) && hasBall == false)
         {
             if (!firstBall) { return; }
             firstBall = false;
-
             Debug.Log("new Ball");
             hasBall = true;
-             Setup();
+            Setup();
         }
     }
 
     public void Setup()
-	{
-		cloneBall = Instantiate(Ball, transform.position, Quaternion.identity) as GameObject;
-		Invoke ("TextStartaus", 0.3f);
+    {
+        Text_Count.text = "3";
+        Text_Count.enabled = false;
+        cloneBall = Instantiate(Ball, transform.position, Quaternion.identity) as GameObject;
+        Invoke("TextStartaus", 0.3f);
 
-	}
+    }
 
-	private void TextStartaus()
-	{
-		Text_Start.enabled = false;
+    public void startSetup()
+    {
+        Debug.Log(Countdowntime + ":" + Time.timeSinceLevelLoad);
+
+        Text_Count.text = "1";
+
+        Invoke("Setup", 0.8f);
+    }
+    private void TextStartaus()
+    {
+        Text_Start.enabled = false;
         bool pos = false;
         if (Random.Range(0, 100) > 50)
         {
@@ -77,94 +92,110 @@ public class GM : MonoBehaviour {
         }
     }
 
-	public void Score(bool isLinks)
-	{
-	
-		Destroy (cloneBall);
-	
-		if (isLinks == true) {
-			R_Score += 1;
-		}
-		else 
-		{
-			L_Score = L_Score+1;
-		}
+    public void Score(bool isLinks)
+    {
 
-		Text_Score.text = L_Score + "  :  " + R_Score;
+        Destroy(cloneBall);
+
+        if (isLinks == true)
+        {
+            R_Score += 1;
+        }
+        else
+        {
+            L_Score = L_Score + 1;
+        }
+
+        Text_Score.text = L_Score + "  :  " + R_Score;
 
 
-		int SpielZustand=CheckSieg ();
+        int SpielZustand = CheckSieg();
 
-		switch (SpielZustand) {
-		case 0:
-			break;
-		case 1:
-			Sieg(1);
-			return;
-			break;
-		case 2:
-			Sieg(2);
-			return;
-			break;
-		}
-		//Invoke ("Setup", 3);
+        switch (SpielZustand)
+        {
+            case 0:
+                break;
+            case 1:
+                Sieg(1);
+                return;
+                break;
+            case 2:
+                Sieg(2);
+                return;
+                break;
+        }
 
-	}
+        Countdowntime = Time.timeSinceLevelLoad;
+        Text_Count.enabled = true;
+        Text_Count.text = "2";
+        Invoke("startSetupZwei", 0.8f);
+    }
 
-	enum Spieler
-	{
-		keiner,
-		links,
-		rechts
-	}
+    public void startSetupZwei()
+    {
+        Debug.Log(Countdowntime + ":" + Time.timeSinceLevelLoad);
 
-	private void Sieg(int wer)
-	{
-		if ((Spieler) wer == Spieler.links) {
-			Text_Sieg.text = "Sieger ist der linke Spieler";
-		}
-		else if ((Spieler) wer == Spieler.rechts) {
-			Text_Sieg.text = "Sieger ist der rechter Spieler";
-		}
-		Text_Sieg.enabled = true;
-		Invoke ("Neustart", 2);
-	}
+        Text_Count.text = "1";
 
-	private void Neustart()
-	{
-        Application.LoadLevel (0);
-        //gameM.EndMinigame(true);
+        Invoke("startSetup", 0.8f);
+    }
+
+    enum Spieler
+    {
+        keiner,
+        links,
+        rechts
+    }
+
+    private void Sieg(int wer)
+    {
+        if ((Spieler)wer == Spieler.links)
+        {
+            Text_Sieg.text = "Sieger ist der linke Spieler";
+        }
+        else if ((Spieler)wer == Spieler.rechts)
+        {
+            Text_Sieg.text = "Sieger ist der rechter Spieler";
+        }
+        Text_Sieg.enabled = true;
+        Invoke("Neustart", 2);
+    }
+
+    private void Neustart()
+    {
+        // Application.LoadLevel (0);
+        gameM.EndMinigame(true);
 
     }
 
-	private int CheckSieg()
-	{
+    private int CheckSieg()
+    {
 
-		// 0= kein Sieger, 1= Sieger Links; 2= Sieger Rechts
-
-
-		if (L_Score >= SiegScore)
-		
-		{
-			return 1;
-
-		}
+        // 0= kein Sieger, 1= Sieger Links; 2= Sieger Rechts
 
 
-		if (R_Score >= SiegScore)
-			
-		{
-			return 2;
-			
-		}
-	
-	
-		return 0;
+        if (L_Score >= SiegScore)
 
-	}
+        {
+            return 1;
+
+        }
 
 
-	/*
+        if (R_Score >= SiegScore)
+
+        {
+            return 2;
+
+        }
+
+
+        return 0;
+
+    }
+
+
+    /*
 
 	void CheckGameOver()
 	{
