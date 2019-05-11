@@ -24,6 +24,15 @@ public class GameManager : MonoBehaviour
 
     public static StartCounter timer;
     #endregion
+    #region "Start"
+    private void Start()
+    {
+        if(this.gameObject.scene.buildIndex == 0)
+        {
+            SceneManager.LoadScene(6, LoadSceneMode.Additive);
+        }
+    }
+    #endregion
     #region "Public Methods"
 
     /// <summary>
