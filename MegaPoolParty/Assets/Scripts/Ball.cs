@@ -25,7 +25,7 @@ public class Ball : MonoBehaviour {
     void FixedUpdate()
     {
         //rb.transform.Translate(Vector3.left);
-       // rb.AddForce(Vector3.forward);
+        rb.AddForce(Vector3.forward *Time.deltaTime * 10);
        
     }
     // Update is called once per frame

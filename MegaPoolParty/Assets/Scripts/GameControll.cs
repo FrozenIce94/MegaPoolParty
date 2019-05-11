@@ -35,14 +35,14 @@ public class GameControll : MonoBehaviour
 
     private void Controll1()
     {
-
+        float Limit = 2.8f;
         float zPos = leftPanel.transform.position.z + (Input.GetAxis("StudentV") * -paddleSpeed);
-        playerPosLeft = new Vector3(-6.5f, 0, Mathf.Clamp(zPos, -4f, 4f));
+        playerPosLeft = new Vector3(-6.5f, 0, Mathf.Clamp(zPos, -Limit, Limit));
         leftPanel.transform.position = playerPosLeft;
 
        
         float zPosL = rightPanel.transform.position.z + (Input.GetAxis("LehrerV") * -paddleSpeed);
-        playerPosRight = new Vector3(6.5f, 0, Mathf.Clamp(zPosL, -4f, 4f));
+        playerPosRight = new Vector3(6.5f, 0, Mathf.Clamp(zPosL, -Limit, Limit));
         rightPanel.transform.position = playerPosRight;
 
         //LehrerV
