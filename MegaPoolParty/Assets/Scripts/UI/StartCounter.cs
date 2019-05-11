@@ -12,6 +12,8 @@ public class StartCounter : MonoBehaviour
     private float timeLeft;
     public readonly float initialTime = 30.0f;
 
+    private string[] descriptionList = new string[] {"None, you should not be here!", "", "", "", "" };
+
     private float countdownTime;
     private bool countdownActive = false;
 
