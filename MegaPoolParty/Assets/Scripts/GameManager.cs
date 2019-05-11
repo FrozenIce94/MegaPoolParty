@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public static PauseMenu pauseMenu;
 
     [Header("Music")]
-    public static AudioSource SoftMusic;
-    public static AudioSource HardMusic;
+     public AudioSource SoftMusic;
+     public AudioSource HardMusic;
 
     [Header("CheatModus MainMenu")]
     public int CheatNextGame = 0;
