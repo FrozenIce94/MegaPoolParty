@@ -19,6 +19,7 @@ public class StartCounter : MonoBehaviour
     private bool m_isAxisInUse = false;
     [Header("Timer Object")]
     public GameObject timer;
+    public GameObject hand;
     [Header("Instructions Object")]
     public GameObject instructions;
     public GameObject instDescription;
@@ -53,6 +54,7 @@ public class StartCounter : MonoBehaviour
         if (timerActive)
         {
             timeLeft = timeLeft - Time.deltaTime;
+            hand.transform.SetPositionAndRotation(hand.transform.position, Quaternion.Euler(new Vector3(0,0, (timeLeft / initialTime) * 360)));
             if (timeLeft < 0.0f)
             {
                 TimerDone();
@@ -119,7 +121,12 @@ public class StartCounter : MonoBehaviour
 
     public void ResumeTimer() => timerActive = true;
 
-    void StartTimer() => timerActive = true;
+    void StartTimer()
+    {
+        timerActive = true;
+        hand.transform.SetPositionAndRotation(hand.transform.position, Quaternion.identity);
+        timer.SetActive(true);
+    }
 
     void HideInstructions()
     {
@@ -138,6 +145,7 @@ public class StartCounter : MonoBehaviour
     void TimerDone()
     {
         timerActive = false;
+        timer.SetActive(false);
         timerFinishedCallback();
     }
 }

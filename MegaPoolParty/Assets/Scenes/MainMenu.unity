@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamerunning: 0
-  CheatNextGame: 0
+  CheatNextGame: 4
 --- !u!1 &920620068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_text: Mega Pool Party
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0cc255d6a6bc9874c848edaa5ba81abc, type: 2}
-  m_sharedMaterial: {fileID: -5930249563606426512, guid: 0cc255d6a6bc9874c848edaa5ba81abc,
+  m_sharedMaterial: {fileID: -7491742045044564044, guid: 0cc255d6a6bc9874c848edaa5ba81abc,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
