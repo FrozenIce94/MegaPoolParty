@@ -38,6 +38,9 @@ public class Quiz : MonoBehaviour
     public float secondsPerAnswer;
     public TextAsset txtDb;
 
+    [Header("WinConditions")]
+    [SerializeField] int scoreToWin = 10;
+
     int studentScore = 0;
     int teacherScore = 0;
 
@@ -191,8 +194,9 @@ public class Quiz : MonoBehaviour
         {
             newAnswer = true;
         }
-
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (studentScore >= scoreToWin || teacherScore >= scoreToWin)
+            endRequested = true;
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             GetComponent<GameManager>().EndMinigame(null);
         }
