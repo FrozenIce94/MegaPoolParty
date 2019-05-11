@@ -1427,7 +1427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamerunning: 0
-  currentfield: 0
   CheatNextGame: 0
 --- !u!4 &287485387
 Transform:
@@ -5761,11 +5760,11 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628879071}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 704c820eef18c3649a292d10dc11e1e0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1628879074
@@ -7721,6 +7720,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3044951561229799247, guid: 6a5398168d7807248af17d7cd8152f44,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2878411362505785931, guid: 6a5398168d7807248af17d7cd8152f44,
         type: 3}
       propertyPath: m_Size.y
@@ -7789,6 +7793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778828411197313934, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 5756220118651723402, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
         type: 3}

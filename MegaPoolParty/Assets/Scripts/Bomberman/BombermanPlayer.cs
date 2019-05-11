@@ -117,14 +117,17 @@ public class BombermanPlayer : MonoBehaviour
         //Move in the XZ plane.
         if (horizontalVelocity > 0)
         {
-            
-            rigidBody.velocity = new Vector3(horizontalVelocity * movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
+
+            //rigidBody.velocity = new Vector3(horizontalVelocity * movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.velocity = new Vector3(movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
             targetModelRotation = Quaternion.Euler(0, 180, 0);
         }
 
 
         if (horizontalVelocity < 0)
-        { rigidBody.velocity = new Vector3(horizontalVelocity * movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
+        {
+            //rigidBody.velocity = new Vector3(horizontalVelocity * movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.velocity = new Vector3(-movingVelocity, rigidBody.velocity.y, rigidBody.velocity.z) ;
             targetModelRotation = Quaternion.Euler(0, 0, 0);
         }
 
@@ -132,13 +135,17 @@ public class BombermanPlayer : MonoBehaviour
         var verticalVelocity = Input.GetAxis($"{prefix}V") * -1;
 
         if (verticalVelocity > 0)
-        { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, verticalVelocity * movingVelocity);
+        {
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, movingVelocity);
+            //rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, verticalVelocity * movingVelocity);
             targetModelRotation = Quaternion.Euler(0, 90, 0);
             
         }
 
         if (verticalVelocity < 0)
-        { rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, verticalVelocity  * movingVelocity);
+        {
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -movingVelocity) ;
+            //rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, verticalVelocity  * movingVelocity);
             targetModelRotation = Quaternion.Euler(0, 270, 0);
         }
 
