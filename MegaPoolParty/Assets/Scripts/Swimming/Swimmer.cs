@@ -65,9 +65,11 @@ public class Swimmer : MonoBehaviour
         if(rigidBody.position.x >= finish)
         {
             gameManager.EndMinigame(IsStudent);
+            GetComponent<GameManager>().StopTimer();
         }
         if (endRequested)
         {
+            GetComponent<GameManager>().StopTimer();
             gameManager.EndMinigame(null);
         }
     }
