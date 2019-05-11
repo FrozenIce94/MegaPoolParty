@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     private static int currentfield;
 
     private static bool gamefinished;
+
+    public static StartCounter timer;
+    public delegate void OnTimerFinished();
     #endregion
     #region "Public Methods"
 
@@ -114,6 +117,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager: Aktuelles Feld: " + currentfield);
         Debug.Log("GameManager: Game Running: " + gamerunning);
         Debug.Log("GameManager: ----- End DebugPrint -----");
+    }
+
+    /// <summary>
+    /// Setzt das Timerobjekt global
+    /// </summary>
+    public void SetTimerObject(StartCounter timer)
+    {
+        GameManager.timer = timer;
+    }
+
+    public void PauseTimer()
+    {
+    }
+
+    public void ResumeTimer()
+    {
+
+    }
+
+    public void StartTimer(OnTimerFinished callback, GameManager.Games game)
+    {
+
+    }
+
+    public void StopTimer()
+    {
+
     }
 
     #endregion
