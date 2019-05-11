@@ -27,7 +27,7 @@ public class StartCounter : MonoBehaviour
     public TextMeshProUGUI countdown;
     public GameObject countdownContainer;
 
-    private void Start() => StartGame(() => { Debug.Log("game finished"); }, game: GameManager.Games.pong);
+    private void Start() => StartGame(() => { Debug.Log("game finished"); }, game: GameManager.Games.Pong);
 
     // Update is called once per frame
     void Update()
