@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private static bool gamefinished;
 
     public static StartCounter timer;
-    public delegate void OnTimerFinished();
     #endregion
     #region "Public Methods"
 
@@ -122,29 +121,15 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Setzt das Timerobjekt global
     /// </summary>
-    public void SetTimerObject(StartCounter timer)
-    {
-        GameManager.timer = timer;
-    }
+    public void SetTimerObject(StartCounter timer) => GameManager.timer = timer;
 
-    public void PauseTimer()
-    {
-    }
+    public void PauseTimer() => timer.PauseTimer();
 
-    public void ResumeTimer()
-    {
+    public void ResumeTimer() => timer.ResumeTimer();
 
-    }
+    public void StartTimer(StartCounter.OnTimerFinished callback, GameManager.Games game) => timer.StartGame(callback, game);
 
-    public void StartTimer(OnTimerFinished callback, GameManager.Games game)
-    {
-
-    }
-
-    public void StopTimer()
-    {
-
-    }
+    public void StopTimer() => timer.StopGame();
 
     #endregion
     #region "Private Methods"
