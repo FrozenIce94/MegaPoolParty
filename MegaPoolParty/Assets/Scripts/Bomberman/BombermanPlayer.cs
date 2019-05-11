@@ -113,7 +113,10 @@ public class BombermanPlayer : MonoBehaviour
 
         var prefix = (IsStudent ? "Student" : "Lehrer");
 
-        var horizontalVelocity = Input.GetAxis($"{prefix}H");
+        var horizontalVelocity = Input.GetAxisRaw($"{prefix}H");
+        var verticalVelocity = Input.GetAxisRaw($"{prefix}V") * -1;
+
+        Debug.Log($"H:{horizontalVelocity} V:{verticalVelocity}");
         //Move in the XZ plane.
         if (horizontalVelocity > 0)
         {
@@ -132,7 +135,7 @@ public class BombermanPlayer : MonoBehaviour
         }
 
 
-        var verticalVelocity = Input.GetAxis($"{prefix}V") * -1;
+        
 
         if (verticalVelocity > 0)
         {
