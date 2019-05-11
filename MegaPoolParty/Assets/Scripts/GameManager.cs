@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         else
         {
 
-            int gameCounts = Enum.GetNames(typeof(Games)).Length; ;
+            int gameCounts = Enum.GetNames(typeof(Games)).Length;
             System.Random random = new System.Random();
 
             int nextGame = 0;
@@ -121,15 +121,46 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Setzt das Timerobjekt global
     /// </summary>
-    public void SetTimerObject(StartCounter timer) => GameManager.timer = timer;
+    public bool SetTimerObject(StartCounter timer)
+    {
+        if (timer == null)
+            return false;
+        GameManager.timer = timer;
+        return true;
+        
+    }
 
-    public void PauseTimer() => timer.PauseTimer();
+    public bool PauseTimer()
+    {
+        if (timer == null)
+            return false;
+        timer.PauseTimer();
+        return true;
+    }
 
-    public void ResumeTimer() => timer.ResumeTimer();
+    public bool ResumeTimer()
+    {
+        if (timer == null)
+            return false;
+        timer.ResumeTimer();
+        return true;
+    }
 
-    public void StartTimer(StartCounter.OnTimerFinished callback, GameManager.Games game) => timer.StartGame(callback, game);
+    public bool StartTimer(StartCounter.OnTimerFinished callback, GameManager.Games game)
+    {
+        if (timer == null)
+            return false;
+        timer.StartGame(callback, game);
+        return true;
+    }
 
-    public void StopTimer() => timer.StopGame();
+    public bool StopTimer()
+    {
+        if (timer == null)
+            return false;
+        timer.StopGame();
+        return true;
+    }
 
     #endregion
     #region "Private Methods"
