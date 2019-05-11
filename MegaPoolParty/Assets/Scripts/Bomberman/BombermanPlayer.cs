@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class BombermanPlayer : MonoBehaviour
@@ -9,11 +10,17 @@ public class BombermanPlayer : MonoBehaviour
     [Header("Common")]
     public bool IsStudent = false;
     public GameManager gameManager;
+    public BombermanPlayer otherPlayer;
+    public List<Collider> currentBombColliders = new List<Collider>();
+
+    [Header("Testing")]
+    public bool stuckInCollisionMode = true;
 
 
     [Header("Visuals")]
     public GameObject model;
     public float turnSpeed = 5f;
+    public TextMeshProUGUI bombLabel;
 
     [Header("Movement")]
     public float movingVelocity = 5f;
@@ -37,15 +44,20 @@ public class BombermanPlayer : MonoBehaviour
     private Rigidbody rigidBody;
     private Quaternion targetModelRotation;
     private int maxBombAmount;
-
-    
-
+    private Collider playerCollider;
 
 
+
+    private void RefreshBombText()
+    {
+        bombLabel.text  = $"Bomben: {bombAmount} / {maxBombAmount}";
+    }
     // Start is called before the first frame update
     void Start()
     {
-       maxBombAmount = bombAmount;
+        maxBombAmount = bombAmount;
+        RefreshBombText();
+        playerCollider = GetComponent<Collider>();
         rigidBody = GetComponent<Rigidbody>();
         targetModelRotation = Quaternion.Euler(0, 0, 0);
     }
@@ -66,11 +78,30 @@ public class BombermanPlayer : MonoBehaviour
 
     }
 
+    internal void IncreaseBombs()
+    {
+        bombAmount += 1;
+        RefreshBombText();
+    }
+
     void ProcessInput()
     {
         
         //Stop
         rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
+
+        //Check if Bomb area is left
+        foreach (var collider in currentBombColliders.ToList())
+        {
+            //if so => enable collision
+            if(!collider.bounds.Intersects(playerCollider.bounds))
+            {
+                Physics.IgnoreCollision(collider, playerCollider, false);
+                currentBombColliders.Remove(collider);
+            }
+        }
+
+
 
         //Move in the XZ plane.
         if (Input.GetKey(keyRight))
@@ -105,11 +136,36 @@ public class BombermanPlayer : MonoBehaviour
         gameManager.EndMinigame(!IsStudent);
     }
 
+
+    
     private void DoPlaceBomb()
     {
+        //No bombs, no placing
         if (bombAmount <= 0) return;
         bombAmount -= 1;
-        var bombObj = Instantiate(bombPrefab, transform.position, Quaternion.Euler(Vector3.zero));
+        RefreshBombText();
+
+        //Create Bomb and disable collider until collision is left
+        var bombObj = Instantiate(bombPrefab, 
+                                  new Vector3(transform.position.x, 
+                                              bombPrefab.transform.localScale.y / 2f,
+                                              transform.position.z),
+                                  Quaternion.Euler(Vector3.zero));
+        var bombCollider = bombObj.GetComponent<Collider>();
+        currentBombColliders.Add(bombCollider);
+        Physics.IgnoreCollision(bombCollider, playerCollider);
+
+        if(!stuckInCollisionMode && otherPlayer != null)
+        { 
+            //if other player also is in the bounds, ignore him too and add to List
+            var otherPlayerCollider = otherPlayer.GetComponent<Collider>();
+            if(bombCollider.bounds.Intersects(otherPlayerCollider.bounds))
+            {
+                Physics.IgnoreCollision(bombCollider, otherPlayerCollider);
+                otherPlayer.currentBombColliders.Add(bombCollider);
+            }
+        }
+
         var bomb = bombObj.GetComponent<Bombe>();
         bomb.playerInstance = this;
 

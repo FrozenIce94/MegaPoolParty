@@ -58,6 +58,6 @@ public class Bombe : MonoBehaviour
 
         }
         Destroy(gameObject);
-        playerInstance.bombAmount += 1;
+        playerInstance.IncreaseBombs();
     }
 }
