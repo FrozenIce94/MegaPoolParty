@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Swimming.unity
     guid: 9f57c2b07d0082b42b21506952f77f86
+  - enabled: 1
+    path: Assets/Scenes/Pong.unity
+    guid: 312ce823807fcf44894dd61f0db965a8
   m_configObjects: {}
