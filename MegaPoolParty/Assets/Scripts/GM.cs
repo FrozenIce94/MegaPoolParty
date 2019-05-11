@@ -151,11 +151,11 @@ public class GM : MonoBehaviour
     {
         if ((Spieler)wer == Spieler.links)
         {
-            Text_Sieg.text = "Sieger ist der linke Spieler";
+            Text_Sieg.text = "Sieger ist der Schüler!";
         }
         else if ((Spieler)wer == Spieler.rechts)
         {
-            Text_Sieg.text = "Sieger ist der rechter Spieler";
+            Text_Sieg.text = "Sieger ist der Lehrer!";
         }
         Text_Sieg.enabled = true;
         Invoke("Neustart", 2);

@@ -39,7 +39,33 @@
 					"questionText" : "Was ist die Hauptstadt von Finnland?",
 					"rightAnswer" : "Helsinki",
 					"wrongAnswers" : ["Athen", "Litauen", "Wien"]
+				},
+				{
+					"questionText" : "Welches Gebirge trennt Europa von Asien?",
+					"rightAnswer" : "Ural",
+					"wrongAnswers" : ["Alpen", "Himalaya", "Anden"]
+				},
+				{
+					"questionText" : "Welches Gebirge trennt Europa von Asien?",
+					"rightAnswer" : "Ural",
+					"wrongAnswers" : ["Alpen", "Himalaya", "Anden"]
+				},
+				{
+					"questionText" : "In welches Meer muendet der Rhein?",
+					"rightAnswer" : "Nordsee",
+					"wrongAnswers" : ["Ostsee", "Mittelmeer", "Schwarzes Meer"]
+				},
+				{
+					"questionText" : "Welches Gebirge trennt Europa von Asien?",
+					"rightAnswer" : "Ural",
+					"wrongAnswers" : ["Alpen", "Himalaya", "Anden"]
+				},
+				{
+					"questionText" : "Welches ist der wasserreichste Fluss der Welt?",
+					"rightAnswer" : "Amazonas",
+					"wrongAnswers" : ["Nil", "Mississippi", "Wolga"]
 				}
+
 			]
 		},
 		{
@@ -81,7 +107,8 @@
 					"questionText" : "Frage2?",
 					"rightAnswer" : "Richtig",
 					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
-				},				{
+				},				
+				{
 					"questionText" : "Frage3?",
 					"rightAnswer" : "Richtig",
 					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
