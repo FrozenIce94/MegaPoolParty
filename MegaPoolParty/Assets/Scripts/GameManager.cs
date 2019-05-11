@@ -9,13 +9,18 @@ public class GameManager : MonoBehaviour
     #region "Variables"
 
     //Static Vars
-    public static bool gamerunning;
-    public static int currentfield;
+    [Header("Common")]
+    public bool gamerunning;
+    public int currentfield;
+
+    [Header("CheatModus MainMenu")]
+    public int CheatNextGame = 0;
+    private static bool cheatexecuded = false;
 
     private static int playfield;
     private static Games lastGame;
 
-    public PauseMenu pm;
+    public static PauseMenu pm;
     #endregion
     #region "Public Methods"
 
@@ -25,7 +30,7 @@ public class GameManager : MonoBehaviour
     public void InitializeGame()
     {
         playfield = 7;
-        currentfield = 3;
+        currentfield = 4;
         lastGame = Games.None;
         gamerunning = false;
 
@@ -43,18 +48,28 @@ public class GameManager : MonoBehaviour
     {
         if (gamerunning) return;
 
-        int gameCounts = Enum.GetNames(typeof(Games)).Length; ;
-        System.Random random = new System.Random();
-
-        int nextGame = 0;
-        while (nextGame == 0 || nextGame == (int)lastGame)
+        if (CheatNextGame != 0 && !cheatexecuded)
         {
-            int randomNumber = random.Next(1, gameCounts);
-            nextGame = randomNumber;
+            lastGame = (Games)CheatNextGame;
+            StartGame(lastGame);
+            cheatexecuded = true;
         }
+        else
+        {
 
-        lastGame = (Games)nextGame;
-        StartGame(lastGame);
+            int gameCounts = Enum.GetNames(typeof(Games)).Length; ;
+            System.Random random = new System.Random();
+
+            int nextGame = 0;
+            while (nextGame == 0 || nextGame == (int)lastGame)
+            {
+                int randomNumber = random.Next(1, gameCounts);
+                nextGame = randomNumber;
+            }
+
+            lastGame = (Games)nextGame;
+            StartGame(lastGame);
+        }
     }
 
     /// <summary>
@@ -122,7 +137,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log("GameManager: Spiel" + game.ToString() + "gestartet");
+        Debug.Log("GameManager: Spiel " + game.ToString() + " gestartet");
     }
 
     /// <summary>
@@ -151,7 +166,19 @@ public class GameManager : MonoBehaviour
     /// <param name="winner">Schüler = true, Lehrer = false</param>
     private void ShowEndScreen(bool winner)
     {
-        pm.ShowEndScreen(winner);
+
+        //Scene menu = SceneManager.GetSceneAt(0);
+        //GameObject[] objects = menu.GetRootGameObjects();
+        //Canvas cv;
+        //for (int i = 0; i < objects.Length - 1; i++)
+        //{
+        //    //if(objects[i].name == "UICanvas")
+        //    //{
+        //    //    (objects[i].SendMessage(""));
+        //    //}
+        //}
+
+        //pm.ShowEndScreen(winner);
     }
 
     /// <summary>
@@ -169,7 +196,7 @@ public class GameManager : MonoBehaviour
     #endregion
     #region "Enum"
 
-    private enum Games
+    public enum Games
     {
         None = 0,
         Bomberman = 1,
