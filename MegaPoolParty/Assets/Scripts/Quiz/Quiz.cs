@@ -56,6 +56,9 @@ public class Quiz : MonoBehaviour
 
     bool endRequested = false;
 
+    ArrayList answerOrder;
+    ArrayList answeredQuestions;
+
     public void requestEnd()
     {
         endRequested = true;
@@ -67,6 +70,7 @@ public class Quiz : MonoBehaviour
         db = JsonUtility.FromJson<QuestionDB>(txtDb.text);
         categoryIndex = (int)Math.Round((db.categories.Length - 1) * UnityEngine.Random.value);
         categoryObj.GetComponent<TextMeshPro>().text = db.categories[categoryIndex].categoryName;
+        answeredQuestions = new ArrayList();
     }
 
     // Update is called once per frame
@@ -78,7 +82,7 @@ public class Quiz : MonoBehaviour
         {
             newAnswer = true;
             int newQuestionIndex = (int)Math.Round((db.categories[categoryIndex].questions.Length - 1) * UnityEngine.Random.value);
-            while(newQuestionIndex == questionIndex)
+            while(answeredQuestions.Contains(newQuestionIndex))
             {
                 newQuestionIndex = (int)Math.Round((db.categories[categoryIndex].questions.Length - 1) * UnityEngine.Random.value);
             }
@@ -131,6 +135,12 @@ public class Quiz : MonoBehaviour
                 teacherScore += 1;
                 teacherScoreObj.GetComponent<TextMeshPro>().text = teacherScore.ToString();
             }
+
+            answeredQuestions.Add(questionIndex);
+            if(answeredQuestions.Count >= db.categories[categoryIndex].questions.Length)
+            {
+                answeredQuestions.Clear();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -145,6 +155,12 @@ public class Quiz : MonoBehaviour
                 studentScore += 1;
                 studentScoreObj.GetComponent<TextMeshPro>().text = studentScore.ToString();
             }
+            answeredQuestions.Add(questionIndex);
+            if (answeredQuestions.Count >= db.categories[categoryIndex].questions.Length)
+            {
+                answeredQuestions.Clear();
+            }
+
         }
 
         if (currentTime - answerStartTime > secondsPerAnswer)
