@@ -119,6 +119,9 @@ public class GameManager : MonoBehaviour
                 //Hier Szene Starten
                 SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 break;
+            case Games.Swimming:
+                SceneManager.LoadScene(2, LoadSceneMode.Additive);
+                break;
         }
 
         Debug.Log("GameManager: Spiel" + game.ToString() + "gestartet");
@@ -170,7 +173,8 @@ public class GameManager : MonoBehaviour
         None = 0,
         Pong = 1,
         Bomberman = 2,
-        Quiz = 3
+        Quiz = 3,
+        Swimming = 4,
     }
 
     #endregion
