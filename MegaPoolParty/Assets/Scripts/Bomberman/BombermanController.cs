@@ -18,6 +18,7 @@ public class BombermanController : MonoBehaviour
     private Vector3 standardSize = new Vector3(12, 100, 12);
 
 
+    public bool IsFinished = false;
     public bool generateRandomLevel = false;
     public TextAsset levelGenFile;
 

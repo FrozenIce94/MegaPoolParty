@@ -13,6 +13,7 @@ public class Bombe : MonoBehaviour
     public float fallForce = 300f;
     public GameObject explosionModel;
     public ParticleSystem explosionParticles;
+    public AudioSource explosionSound;
 
     public BombermanPlayer playerInstance;
 
@@ -25,8 +26,7 @@ public class Bombe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         rigidBody = GetComponent<Rigidbody>();
-        
+        rigidBody = GetComponent<Rigidbody>();
         explosionTimer = timeToExplode;
         explosionParticles.Stop();
         explosionModel.transform.localScale = Vector3.one * (explosionRadius * 0.5f);
@@ -58,6 +58,7 @@ public class Bombe : MonoBehaviour
         explosionParticles.transform.position = transform.position;
         explosionParticles.Play();
         yield return new WaitForSeconds(explosionDuration);
+        StartCoroutine(ExplosionSound());
         var hitObjects = Physics.OverlapSphere(explosionParticles.transform.position, explosionRadius * 0.6f);
         foreach (var collider in hitObjects)
         {
@@ -69,16 +70,10 @@ public class Bombe : MonoBehaviour
                 player.Hit();
                 firstHit = true;
             }
-
-            //if(collider.gameObject.tag == "Regal")
-            //{
-            //    Destroy(collider.gameObject);
-            //}
-
         }
-        Destroy(gameObject);
         playerInstance.IncreaseBombs();
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -90,4 +85,12 @@ public class Bombe : MonoBehaviour
             ExecuteFall();
         }
     }
+
+    private IEnumerator ExplosionSound()
+    {
+        explosionSound.Play();
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
+    }
+
 }
