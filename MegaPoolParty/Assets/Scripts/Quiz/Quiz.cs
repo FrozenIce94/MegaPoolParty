@@ -138,7 +138,11 @@ public class Quiz : MonoBehaviour
 
         answerAObj.GetComponent<TextMeshPro>().text = answerText;
 
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.A)  || 
+            Input.GetKeyDown(KeyCode.W) || 
+            Input.GetKeyDown(KeyCode.S) || 
+            Input.GetKeyDown(KeyCode.D) ||
+            Input.GetButtonDown("Fire1_S"))
         {
             newQuestion = true;
             if(0 == answerIndex) //correct answer
@@ -158,7 +162,11 @@ public class Quiz : MonoBehaviour
                 answeredQuestions.Clear();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow)  || 
+            Input.GetKeyDown(KeyCode.DownArrow)     || 
+            Input.GetKeyDown(KeyCode.LeftArrow)     || 
+            Input.GetKeyDown(KeyCode.RightArrow)    ||
+            Input.GetButtonDown("Fire1_L"))
         {
             newQuestion = true;
             if (0 == answerIndex) //correct answer
