@@ -1826,10 +1826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name:  
   m_EditorClassIdentifier: 
-  SoftMusic: {fileID: 1652248267}
-  HardMusic: {fileID: 1582605302}
-  CheatNextGame: 2
-  CheatNextGame: 1
+  CheatNextGame: 4
 --- !u!1 &920620068
 GameObject:
   m_ObjectHideFlags: 0

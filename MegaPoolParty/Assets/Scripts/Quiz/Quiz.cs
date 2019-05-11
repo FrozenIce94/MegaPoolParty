@@ -205,14 +205,17 @@ public class Quiz : MonoBehaviour
         {
             if (teacherScore == studentScore)
             {
+                GetComponent<GameManager>().StopTimer();
                 GetComponent<GameManager>().EndMinigame(null);
             }
             else if (teacherScore < studentScore)
             {
+                GetComponent<GameManager>().StopTimer();
                 GetComponent<GameManager>().EndMinigame(true);
             }
             else
             {
+                GetComponent<GameManager>().StopTimer();
                 GetComponent<GameManager>().EndMinigame(false);
             }
         }

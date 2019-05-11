@@ -28,6 +28,13 @@ public class GM : MonoBehaviour
 
     public bool SchuelerWinner;
 
+    bool endRequested = false;
+    bool timerRegistered = false;
+    public void requestEnd()
+    {
+        endRequested = true;
+    }
+
     // Use this for initialization
     void Awake()
     {
@@ -47,6 +54,13 @@ public class GM : MonoBehaviour
 
     void Update()
     {
+        if (!timerRegistered)
+        {
+            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Swimming);
+        }
+        if (!timerRegistered)
+            return;
+
         bool StartInput = false;
 
         if (Text_Sieg.enabled == true)
@@ -169,6 +183,7 @@ public class GM : MonoBehaviour
     private void Neustart()
     {
         // Application.LoadLevel (0);
+        gameM.StopTimer();
         gameM.EndMinigame(SchuelerWinner);
 
     }
@@ -192,6 +207,20 @@ public class GM : MonoBehaviour
         {
             return 2;
 
+        }
+
+        if (endRequested)
+        {
+            if(L_Score > R_Score)
+            {
+                return 1;
+            } else if(L_Score < R_Score)
+            {
+                return 2;
+            } else
+            {
+                gameM.EndMinigame(null);
+            }
         }
 
 

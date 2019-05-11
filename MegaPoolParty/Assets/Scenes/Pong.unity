@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8576691, g: 0.8773585, b: 0.79045033, a: 1}
+  m_Color: {r: 0.8576691, g: 0.8773585, b: 0.79045033, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2242,11 +2242,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: panel1
       objectReference: {fileID: 0}
-    - target: {fileID: 6381142232587129651, guid: b657451d41225c24585628fb2b8f1884,
-        type: 3}
-      propertyPath: time
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6381142233573007904, guid: b657451d41225c24585628fb2b8f1884,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2301,6 +2296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381142232587129651, guid: b657451d41225c24585628fb2b8f1884,
+        type: 3}
+      propertyPath: time
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b657451d41225c24585628fb2b8f1884, type: 3}
