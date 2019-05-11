@@ -652,7 +652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamerunning: 0
+  SoftMusic: {fileID: 0}
+  HardMusic: {fileID: 0}
   CheatNextGame: 4
 --- !u!1 &714085242
 GameObject:
@@ -1912,7 +1913,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!224 &1934432121
 RectTransform:
