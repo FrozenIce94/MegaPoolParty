@@ -18,7 +18,7 @@ public class Swimmer : MonoBehaviour
     public KeyCode keyPressing;
 
     private Rigidbody rigidBody;
-
+    private bool left = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +29,18 @@ public class Swimmer : MonoBehaviour
     void FixedUpdate()
     {
         rigidBody.velocity = new Vector3(0, 0, 0);
+
+        var prefix = (IsStudent ? "Student" : "Lehrer");
+        var horizontalVelocity = Input.GetAxisRaw($"{prefix}H");
+
         //Move in the XZ plane.
-        if (Input.GetKeyDown(keyPressing))
+        if ((horizontalVelocity > 0 && left)
+            || (horizontalVelocity < 0 && !left))
         {
-            rigidBody.velocity = new Vector3(Step, 0, 0);          
+            rigidBody.velocity = new Vector3(Step, 0, 0);
+            left = !left;
         }
+
 
         CheckGameEnd();
     }

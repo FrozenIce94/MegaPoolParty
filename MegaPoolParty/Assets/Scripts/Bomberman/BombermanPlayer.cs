@@ -112,11 +112,9 @@ public class BombermanPlayer : MonoBehaviour
         }
 
         var prefix = (IsStudent ? "Student" : "Lehrer");
-
         var horizontalVelocity = Input.GetAxisRaw($"{prefix}H");
         var verticalVelocity = Input.GetAxisRaw($"{prefix}V") * -1;
 
-        Debug.Log($"H:{horizontalVelocity} V:{verticalVelocity}");
         //Move in the XZ plane.
         if (horizontalVelocity > 0)
         {
@@ -155,6 +153,7 @@ public class BombermanPlayer : MonoBehaviour
 
         if (Input.GetButtonDown((IsStudent ? "Fire1_S" : "Fire1_L")))
         {
+            Debug.Log((IsStudent ? "Fire1_S" : "Fire1_L"));
             DoPlaceBomb();
         }
     }
