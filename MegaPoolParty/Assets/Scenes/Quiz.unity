@@ -274,7 +274,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -422,7 +422,6 @@ MonoBehaviour:
   studentScoreObj: {fileID: 2127381632}
   teacherScoreObj: {fileID: 1943272932}
   answerAObj: {fileID: 1504705222}
-  answerBObj: {fileID: 1504705222}
   secondsPerAnswer: 1
   txtDb: {fileID: 4900000, guid: c8a3b2633582f2f448569fae34c30cff, type: 3}
 --- !u!114 &785625748
@@ -437,7 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pm: {fileID: 0}
+  gamerunning: 0
+  currentfield: 0
+  CheatNextGame: 0
 --- !u!1 &803364194
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +624,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -892,7 +893,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1129,7 +1130,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.88878155, y: 0, z: 15.233308, w: 0}
   m_textInfo:
     textComponent: {fileID: 1943272933}
     characterCount: 1

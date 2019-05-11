@@ -13,22 +13,29 @@ public class Question
 }
 
 [Serializable]
-public class QuestionDB
+public class QuestionCategory
 {
+    public string categoryName;
     public Question[] questions;
 }
+
+
+[Serializable]
+public class QuestionDB
+{
+    public QuestionCategory[] categories;
+}
+
+
 
 public class Quiz : MonoBehaviour
 {
     public GameObject questionObj;
+    public GameObject categoryObj;
     public GameObject studentScoreObj;
     public GameObject teacherScoreObj;
-
     public GameObject answerAObj;
-    public GameObject answerBObj;
-
     public float secondsPerAnswer;
-   
     public TextAsset txtDb;
 
     int studentScore = 0;
@@ -36,6 +43,8 @@ public class Quiz : MonoBehaviour
 
     QuestionDB db;
     Question currentQuestion;
+
+    int categoryIndex = 0;
 
     bool newQuestion = true;
     float questionStartTime;
@@ -45,10 +54,19 @@ public class Quiz : MonoBehaviour
     float answerStartTime;
     int answerIndex = 0;
 
+    bool endRequested = false;
+
+    public void requestEnd()
+    {
+        endRequested = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         db = JsonUtility.FromJson<QuestionDB>(txtDb.text);
+        categoryIndex = (int)Math.Round((db.categories.Length - 1) * UnityEngine.Random.value);
+        categoryObj.GetComponent<TextMeshPro>().text = db.categories[categoryIndex].categoryName;
     }
 
     // Update is called once per frame
@@ -58,14 +76,15 @@ public class Quiz : MonoBehaviour
 
         if (newQuestion)
         {
-            int newQuestionIndex = (int)Math.Round((db.questions.Length - 1) * UnityEngine.Random.value);
+            newAnswer = true;
+            int newQuestionIndex = (int)Math.Round((db.categories[categoryIndex].questions.Length - 1) * UnityEngine.Random.value);
             while(newQuestionIndex == questionIndex)
             {
-                newQuestionIndex = (int)Math.Round((db.questions.Length - 1) * UnityEngine.Random.value);
+                newQuestionIndex = (int)Math.Round((db.categories[categoryIndex].questions.Length - 1) * UnityEngine.Random.value);
             }
             questionIndex = newQuestionIndex;
 
-            currentQuestion = db.questions[questionIndex];
+            currentQuestion = db.categories[categoryIndex].questions[questionIndex];
 
             TextMeshPro questionTextComp = questionObj.GetComponent<TextMeshPro>();
             questionTextComp.text = currentQuestion.questionText;
@@ -133,9 +152,20 @@ public class Quiz : MonoBehaviour
             newAnswer = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(endRequested)
         {
-            GetComponent<GameManager>().EndMinigame(studentScore > teacherScore);
+            if (teacherScore == studentScore)
+            {
+
+            }
+            else if (teacherScore < studentScore)
+            {
+                GetComponent<GameManager>().EndMinigame(true);
+            }
+            else
+            {
+                GetComponent<GameManager>().EndMinigame(false);
+            }
         }
     }
 }
