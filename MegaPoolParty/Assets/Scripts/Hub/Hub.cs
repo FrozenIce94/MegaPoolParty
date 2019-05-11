@@ -25,6 +25,14 @@ public class Hub : MonoBehaviour
         InitHub(gm.GetPositions());
     }
 
+    private void Update()
+    {
+        if(Input.GetButtonDown("Fire1_S") || Input.GetButtonDown("Fire1_L"))
+        {
+            NextGame();
+        }
+    }
+
     public void InitHub(KeyValuePair<int, int> pos)
     {
         player.position = positions[pos.Key];

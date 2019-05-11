@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static GameManager;
+using static MusicManager;
 
 public class StartCounter : MonoBehaviour
 {

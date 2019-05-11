@@ -60,15 +60,17 @@ public class Swimmer : MonoBehaviour
         CheckGameEnd();
     }
 
+    bool hasEnded = false;
     public void CheckGameEnd()
     {
-        if(rigidBody.position.x >= finish)
+        if(rigidBody.position.x >= finish && !hasEnded)
         {
+            hasEnded = true;
             gameManager.EndMinigame(IsStudent);
             GetComponent<GameManager>().StopTimer();
-        }
-        if (endRequested)
+        }else if (endRequested && !hasEnded)
         {
+            hasEnded = true;
             GetComponent<GameManager>().StopTimer();
             gameManager.EndMinigame(null);
         }

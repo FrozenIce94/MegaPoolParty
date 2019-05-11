@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static MusicManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -108,10 +109,12 @@ public class GameManager : MonoBehaviour
 
             if (winner.Value)
             {
+                musicManager.ActionSound(ActionSounds.TeacherLoose);
                 currentfield += 1;
             }
             else
             {
+                musicManager.ActionSound(ActionSounds.StudentLoose);
                 currentfield -= 1;
             }
         }
@@ -227,6 +230,7 @@ public class GameManager : MonoBehaviour
         switch (game)
         {
             case Games.None:
+                musicManager?.PlayMusic(false);
                 StartRandomGame();
                 break;
             case Games.Bomberman:
@@ -291,6 +295,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void CloseSceneAndShowHub()
     {
+        musicManager.PlayMusic(false);
         SceneManager.UnloadSceneAsync((int)lastGame);
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
@@ -302,21 +307,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayActionSound(ActionSounds sound)
     {
-        switch (sound)
-        {
-            case ActionSounds.Countdown:
-                musicManager?.PlayCountdown();
-                break;
-            default:
-                break;
-        }
+        musicManager?.ActionSound(sound);
+
+
     }
     #endregion
     #region "Enum"
-    public enum ActionSounds
-    {
-        Countdown
-    }
+
 
     public enum Games
     {
