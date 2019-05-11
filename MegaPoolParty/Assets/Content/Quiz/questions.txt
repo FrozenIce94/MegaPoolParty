@@ -146,4 +146,128 @@
 			]
 		}
 	]
+{
+	"categories" :
+	[
+		{
+			"categoryName" : "Erdkunde",
+			"questions":
+			[
+				{
+					"questionText" : "Welches Land grenzt nicht an Deutschland?",
+					"rightAnswer" : "Schweden",
+					"wrongAnswers" : ["Italien", "Polen", "Oestereich"]
+				},
+				{
+					"questionText" : "Was ist die Hauptstadt von Deutschland?",
+					"rightAnswer" : "Berlin",
+					"wrongAnswers" : ["Bremen", "Muenchen", "Bonn"]
+				},
+				{
+					"questionText" : "Von was ist Hamburg die Hauptstadt?",
+					"rightAnswer" : "Hamburg",
+					"wrongAnswers" : ["Sachsen-Anhalt", "Bayern", "Mecklenburg-Vorpommern"]
+				},
+				{
+					"questionText" : "Was ist die Hauptstadt von Bulgarien?",
+					"rightAnswer" : "Sofia",
+					"wrongAnswers" : ["Bruessel", "Burges", "Minsk"]
+				},
+				{
+					"questionText" : "Was ist die Hauptstadt von Portugal?",
+					"rightAnswer" : "Lissabon",
+					"wrongAnswers" : ["Barcelona", "Madrid", "Neapel"]
+				},
+				{
+					"questionText" : "Was ist die Hauptstadt von Polen?",
+					"rightAnswer" : "Warschau",
+					"wrongAnswers" : ["Prag", "Stettin", "Copenhagen"]
+				},
+				{
+					"questionText" : "Was ist die Hauptstadt von Finnland?",
+					"rightAnswer" : "Helsinki",
+					"wrongAnswers" : ["Athen", "Litauen", "Wien"]
+				},
+				{
+					"questionText" : "Welches Gebirge trennt Europa von Asien?",
+					"rightAnswer" : "Ural",
+					"wrongAnswers" : ["Alpen", "Himalaya", "Anden"]
+				},
+				{
+					"questionText" : "Welches Gebirge trennt Europa von Asien?",
+					"rightAnswer" : "Ural",
+					"wrongAnswers" : ["Alpen", "Himalaya", "Anden"]
+				},
+				{
+					"questionText" : "In welches Meer muendet der Rhein?",
+					"rightAnswer" : "Nordsee",
+					"wrongAnswers" : ["Ostsee", "Mittelmeer", "Schwarzes Meer"]
+				},
+				{
+					"questionText" : "Welches Gebirge trennt Europa von Asien?",
+					"rightAnswer" : "Ural",
+					"wrongAnswers" : ["Alpen", "Himalaya", "Anden"]
+				},
+				{
+					"questionText" : "Welches ist der wasserreichste Fluss der Welt?",
+					"rightAnswer" : "Amazonas",
+					"wrongAnswers" : ["Nil", "Mississippi", "Wolga"]
+				}
+
+			]
+		},
+		{
+			"categoryName" : "Mathe",
+			"questions":
+			[
+				{
+					"questionText" : "Was ist die Wurzel von 9",
+					"rightAnswer" : "3",
+					"wrongAnswers" : ["7", "18", "2"]
+				},
+				{
+					"questionText" : "7 x 8 =",
+					"rightAnswer" : "56",
+					"wrongAnswers" : ["51", "65", "73"]
+				},
+				{
+					"questionText" : "5 + 3 * 2 =",
+					"rightAnswer" : "11",
+					"wrongAnswers" : ["16", "13", "24"]
+				},
+				{
+					"questionText" : "(7 + 2) * 3 =",
+					"rightAnswer" : "27",
+					"wrongAnswers" : ["13", "23", "17"]
+				}
+			]
+		},
+		{
+			"categoryName" : "Sprachen",
+			"questions":
+			[
+				{
+					"questionText" : "Frage1?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				},
+				{
+					"questionText" : "Frage2?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				},				
+				{
+					"questionText" : "Frage3?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				},
+				{
+					"questionText" : "Frage4?",
+					"rightAnswer" : "Richtig",
+					"wrongAnswers" : ["Falsch1", "Falsch2", "Falsch3"]
+				}
+
+			]
+		}
+	]
 }
