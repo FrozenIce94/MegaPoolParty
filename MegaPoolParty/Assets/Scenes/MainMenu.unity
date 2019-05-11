@@ -1774,6 +1774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ea814aa77c9a84f8efce052d6d0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausable: 1
   pauseMenu: {fileID: 1286749189}
   mainMenu: {fileID: 798537072}
   endScreen: {fileID: 739978755}
@@ -1793,8 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamerunning: 0
-  CheatNextGame: 4
+  CheatNextGame: 2
 --- !u!1 &920620068
 GameObject:
   m_ObjectHideFlags: 0

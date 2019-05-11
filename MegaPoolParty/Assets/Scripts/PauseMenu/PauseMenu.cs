@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
+    public bool pausable = true;
+
     private bool m_isAxisInUse = false;
     private GameManager gm;
 
@@ -26,13 +28,14 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         gm = GetComponent<GameManager>();
+        gm.SetPauseMenu(this);
         mainMenuButton.Select();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Cancel") == 1 && m_isAxisInUse == false)
+        if ((Input.GetAxisRaw("Cancel") == 1 || Input.GetAxisRaw("Submit") == 1 ) && m_isAxisInUse == false && pausable)
         {
             if (GameIsPaused)
             {
@@ -45,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
             m_isAxisInUse = true;
         }
-        if (Input.GetAxisRaw("Cancel") == 0)
+        if (Input.GetAxisRaw("Cancel") == 0 && Input.GetAxisRaw("Submit") == 0)
         {
             m_isAxisInUse = false;
         }
@@ -60,7 +63,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        if(! endScreen.activeSelf && ! mainMenu.activeSelf)
+        if(! endScreen.activeSelf && ! mainMenu.activeSelf && pausable)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;

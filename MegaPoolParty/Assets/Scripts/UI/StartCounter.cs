@@ -9,7 +9,7 @@ public class StartCounter : MonoBehaviour
     private OnTimerFinished timerFinishedCallback;
     private bool timerActive = false;
     private float timeLeft;
-    private readonly float initialTime = 60.0f;
+    public readonly float initialTime = 30.0f;
 
     private float countdownTime;
     private bool countdownActive = false;
@@ -123,6 +123,7 @@ public class StartCounter : MonoBehaviour
         countdownActive = false;
         Time.timeScale = 1.0f;
         StartTimer();
+        GameManager.pauseMenu.pausable = true;
     }
 
     public void PauseTimer() => timerActive = false;
@@ -148,7 +149,7 @@ public class StartCounter : MonoBehaviour
         TextMeshProUGUI descText = instDescription.GetComponent<TextMeshProUGUI>();
         descText.text = "test Beschreibung vom code aus fuer game: " + game.ToString();
         showInstructions = true;
-
+        GameManager.pauseMenu.pausable = false;
     }
 
     void TimerDone()

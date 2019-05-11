@@ -148,7 +148,7 @@ public class Quiz : MonoBehaviour
             Input.GetButtonDown("Fire1_S"))
         {
             newQuestion = true;
-            if(0 == answerIndex) //correct answer
+            if(0 == (int)answerPermutation[answerIndex]) //correct answer
             {
                 studentScore += 1;
                 studentScoreObj.GetComponent<TextMeshPro>().text = studentScore.ToString();
@@ -172,7 +172,7 @@ public class Quiz : MonoBehaviour
             Input.GetButtonDown("Fire1_L"))
         {
             newQuestion = true;
-            if (0 == answerIndex) //correct answer
+            if (0 == (int)answerPermutation[answerIndex]) //correct answer
             {
                 teacherScore += 1;
                 teacherScoreObj.GetComponent<TextMeshPro>().text = teacherScore.ToString();
