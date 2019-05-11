@@ -25,16 +25,24 @@ public class GameManager : MonoBehaviour
 
     public static StartCounter timer;
 
-    public MusicManager musicManager;
+    public static MusicManager musicManager;
     #endregion
     #region "Start"
     private void Start()
     {
+
         if(this.gameObject.scene.buildIndex == 0)
         {
             SceneManager.LoadScene(6, LoadSceneMode.Additive);
         }
     }
+
+    public void SetMusicManager(MusicManager manager)
+    {
+        GameManager.musicManager = manager;
+    }
+
+
     #endregion
     #region "Public Methods"
 
@@ -291,8 +299,24 @@ public class GameManager : MonoBehaviour
     {
         return new KeyValuePair<int, int>(lastfield, currentfield);
     }
+
+    public void PlayActionSound(ActionSounds sound)
+    {
+        switch (sound)
+        {
+            case ActionSounds.Countdown:
+                musicManager?.PlayCountdown();
+                break;
+            default:
+                break;
+        }
+    }
     #endregion
     #region "Enum"
+    public enum ActionSounds
+    {
+        Countdown
+    }
 
     public enum Games
     {

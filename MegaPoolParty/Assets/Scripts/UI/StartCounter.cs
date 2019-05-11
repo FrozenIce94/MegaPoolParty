@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static GameManager;
 
 public class StartCounter : MonoBehaviour
 {
@@ -112,6 +113,7 @@ public class StartCounter : MonoBehaviour
 
     void StartCountdown()
     {
+        gameManager.PlayActionSound(ActionSounds.Countdown);
         countdown.text = "3";
         countdownContainer.SetActive(true);
         countdownActive = true;

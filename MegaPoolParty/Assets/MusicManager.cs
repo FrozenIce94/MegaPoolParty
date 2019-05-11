@@ -7,10 +7,14 @@ public class MusicManager : MonoBehaviour
 
     public AudioSource SoftMusic;
     public AudioSource HardMusic;
+
+    public AudioSource Countdown;
+
+    public GameManager startGameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        startGameManager.SetMusicManager(this);
     }
 
     // Update is called once per frame
@@ -40,4 +44,7 @@ public class MusicManager : MonoBehaviour
             SoftMusic.Play();
         }
     }
+
+    public void PlayCountdown()
+    { Countdown.Play(); }
 }

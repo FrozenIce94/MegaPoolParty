@@ -1427,6 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CheatNextGame: 0
+  musicManager: {fileID: 0}
 --- !u!4 &287485387
 Transform:
   m_ObjectHideFlags: 0
@@ -1457,6 +1458,7 @@ MonoBehaviour:
   IsFinished: 0
   generateRandomLevel: 0
   levelGenFile: {fileID: 4900000, guid: a0795057a91b9fb4383bbbb29e5774b2, type: 3}
+  timerRegistered: 0
   minBlockCountPerSide: 10
   maxBlockCountPerSide: 20
   blockPrefab: {fileID: 8262824690454133352, guid: 57780ad0d03940545995ab890de40684,
