@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuecherregalBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 8217626491957312919, guid: de444a1f08ee48c4bad75713f6a203bf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Regal
+      objectReference: {fileID: 0}
     - target: {fileID: 4922863311812464516, guid: de444a1f08ee48c4bad75713f6a203bf,
         type: 3}
       propertyPath: m_LocalPosition.x

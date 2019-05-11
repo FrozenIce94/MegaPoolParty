@@ -1,0 +1,15 @@
+{
+	"questions":
+	[
+		{
+			"questionText" : "what is the meaning of live the universe and everything?",
+			"rightAnswer" : "42",
+			"wrongAnswers" : ["lunch", "games", "3.141"]
+		},
+		{
+			"questionText" : "Was ist die Hauptstadt von Deutschland?",
+			"rightAnswer" : "Berlin",
+			"wrongAnswers" : ["Bremen", "Muenchen", "Bonn"]
+		}
+	]
+}
