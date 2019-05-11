@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public void InitializeGame()
     {
         playfield = 7;
-        currentfield = 6;
+        currentfield = 4;
         lastGame = Games.None;
         gamerunning = false;
         gamefinished = false;
