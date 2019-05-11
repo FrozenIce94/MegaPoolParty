@@ -14,7 +14,7 @@ public class StartCounter : MonoBehaviour
     private float countdownTime;
     private bool countdownActive = false;
 
-    private bool showInstructions = true;
+    private bool showInstructions = false;
 
     private bool m_isAxisInUse = false;
     [Header("Timer Object")]
@@ -131,6 +131,7 @@ public class StartCounter : MonoBehaviour
         instructions.SetActive(true);
         TextMeshProUGUI descText = instDescription.GetComponent<TextMeshProUGUI>();
         descText.text = "test Beschreibung vom code aus fuer game: " + game.ToString();
+        showInstructions = true;
 
     }
 
