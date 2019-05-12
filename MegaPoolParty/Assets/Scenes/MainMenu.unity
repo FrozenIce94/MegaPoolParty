@@ -2305,7 +2305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheatNextGame: 1
+  CheatNextGame: 3
 --- !u!1 &920620068
 GameObject:
   m_ObjectHideFlags: 0
@@ -4732,7 +4732,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 445a871cbd8d3d545830053eb253eb3e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5474d49fe8e5e57428534810205614d4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
