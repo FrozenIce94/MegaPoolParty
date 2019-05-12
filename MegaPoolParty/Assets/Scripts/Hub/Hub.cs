@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static System.Net.Mime.MediaTypeNames;
@@ -6,8 +7,9 @@ using static System.Net.Mime.MediaTypeNames;
 public class Hub : MonoBehaviour
 {
 
-    public Rigidbody player;
+    public GameObject player;
     public GameManager gm;
+    public ParticleSystem ps;
 
     private Dictionary<int, Vector3> positions = new Dictionary<int, Vector3>();
 
@@ -35,8 +37,17 @@ public class Hub : MonoBehaviour
 
     public void InitHub(KeyValuePair<int, int> pos)
     {
-        player.position = positions[pos.Key];
-        player.MovePosition(positions[pos.Value]);
+        player.transform.position = positions[pos.Key];
+
+        if (positions[pos.Key] == positions[pos.Value]) return;
+        StartCoroutine(FallDown(positions[pos.Value]));
+    }
+
+    private IEnumerator FallDown(Vector3 newPosition)
+    {
+        yield return new WaitForSeconds(1f);
+        player.transform.position = newPosition;
+        ps.Play();
     }
 
     public void NextGame()
