@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -98,6 +99,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void GoBackToMainMenu()
     {
+        SceneManager.UnloadSceneAsync(5);
         endScreen.SetActive(false);
         mainMenu.SetActive(true);
         mainMenuButton.Select();

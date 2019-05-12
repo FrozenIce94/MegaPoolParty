@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public int CheatNextGame = 0;
     private static bool cheatexecuded = false;
 
-    private static int playfield;
     private static Games lastGame;
     private static int currentfield, lastfield;
 
@@ -73,15 +72,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitializeGame()
     {
-        playfield = 7;
-        currentfield = 4;
+        currentfield = 2;
         lastfield = 4;
         lastGame = Games.None;
         gamerunning = false;
         gamefinished = false;
 
         Debug.Log("GameManager: ----- Start Init -----");
-        Debug.Log("GameManager: Playfields: " + playfield);
         Debug.Log("GameManager: Startfeld: " + currentfield);
         Debug.Log("GameManager: Game Running: " + gamerunning);
         Debug.Log("GameManager: ----- End Init -----");
@@ -93,6 +90,7 @@ public class GameManager : MonoBehaviour
     public void StartRandomGame()
     {
         if (gamerunning) return;
+        if (CheckGameEnd()) return;
 
         if (CheatNextGame != 0 && !cheatexecuded)
         {
@@ -134,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         DebugCurrentData();
 
-        CheckGameEnd();
+        CloseSceneAndShowHub();
     }
 
     /// <summary>
@@ -144,7 +142,8 @@ public class GameManager : MonoBehaviour
     public void EndHub()
     {
         Debug.Log("GameManager: Hub beendet");
-        SceneManager.UnloadSceneAsync(5);
+        if (currentfield != 1 && currentfield != 7) SceneManager.UnloadSceneAsync(5);
+        
         StartRandomGame();
     }
 
@@ -270,34 +269,38 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Prüft ob das gesamte Spiel vorbei ist
     /// </summary>
-    private void CheckGameEnd()
+    private bool CheckGameEnd()
     {
-        if(currentfield == 0)
+        if(currentfield == 1)
         {
             Debug.Log("GameManager: Lehrer gewonnen");
-            SceneManager.UnloadSceneAsync((int)lastGame);
             musicManager.ActionSound(ActionSounds.TeacherWin);
-            StartCoroutine(Waiter());
             ShowEndScreen(false);
-            return;
+            return true;
         }
 
         if(currentfield == 7)
         {
             Debug.Log("GameManager: Schüler gewonnen");
-            SceneManager.UnloadSceneAsync((int)lastGame);
             musicManager.ActionSound(ActionSounds.StudentWin);
-            StartCoroutine(Waiter());
             ShowEndScreen(true);
-            return;
+            return true;
         }
-
-        CloseSceneAndShowHub();
+        return false;
     }
 
-    private IEnumerator Waiter()
+    private IEnumerator Waiter(float sec, bool winner)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(sec);
+        if (winner)
+        {
+            musicManager.ActionSound(ActionSounds.StudentWin);
+        } else
+        {
+            musicManager.ActionSound(ActionSounds.TeacherWin);
+        }
+        
+        ShowEndScreen(winner);
     }
 
     /// <summary>
@@ -319,7 +322,6 @@ public class GameManager : MonoBehaviour
     {
         musicManager.PlayMusic(false);
         SceneManager.UnloadSceneAsync((int)lastGame);
-        StartCoroutine(Waiter());
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
 
