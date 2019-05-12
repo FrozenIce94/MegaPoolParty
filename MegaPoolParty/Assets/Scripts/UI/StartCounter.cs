@@ -14,13 +14,10 @@ public class StartCounter : MonoBehaviour
     public readonly float initialTime = 30.0f;
 
     private string[] descriptionList = new string[] {"None, you should not be here!",
-        $"Das Ziel des Spieles ist es, mit seiner 'Bombe' den gegenerischen Spielercharakter einzukesseln.{Environment.NewLine}" +
-        $"Hierfür bewegt man sich mit seiner Figur mittels der Pfeiltasten (Lehrer) / WASD (Schüler) oder dem Joystick.{Environment.NewLine}" +
-        $"Die Bombe platziert man mit der linken (Schüler) oder rechten (Lehrer) Shift-Taste oder dem Hauptbutton.",
-        $"Das Ziel des Spieles ist es, mit seinem Schüler oder dem Lehrer als erstes an die andere Seite der Schwimmbahn zu kommen{Environment.NewLine}" +
-        $"Hierfür bewegt man sich abwechseln nach Links- und Rechts um sich auf die andere Seite zu bewegen.",
-        "",
-        "" };
+        "Bibliotheks-Battle!\nWeiche den Hausaufgaben des Lehrers oder den Strinkbomben des Schülers aus und versuche deinen Gegner zu treffen.\nSteuere deinen Charakter mit WASD, Pfeiltasten oder mit dem linken Stick.\nShift links und rechts oder A auf dem Controller legen die Bomben.\nIhr könnt 3 Bomben gleichzeitig haben.",
+        "Wettschwimmen!\nWerde Erster, indem du abwechselnd A/D, Pfeil links/rechts drückst oder den Controller Stick nach links und rechts bewegst.",
+        "Eine runde Beachball Pong im Pool!\nBewege deinen Spieler mit W/S, Pfeil Hoch/Runter oder linkem Joystick nach oben oder unten, um den Ball zum anderen Spieler zu bringen.",
+        "Wissens-Quiz!\nDrücke bei der richtigen Antwort eine deiner Bewegungstasten oder A auf dem Controller" };
 
     private float countdownTime;
     private bool countdownActive = false;
@@ -40,6 +37,9 @@ public class StartCounter : MonoBehaviour
     public GameObject countdownContainer;
     [Header("GameManager")]
     public GameManager gameManager;
+    [Header("Instruction Images")]
+    public UnityEngine.UI.Image instructionImageRenderer;
+    public Sprite[] sprites;
 
     private void Start()
     {
@@ -161,6 +161,7 @@ public class StartCounter : MonoBehaviour
         instructions.SetActive(true);
         TextMeshProUGUI descText = instDescription.GetComponent<TextMeshProUGUI>();
         descText.text = descriptionList[(int)game];
+        instructionImageRenderer.sprite = sprites[(int)game-1];
         showInstructions = true;
         GameManager.pauseMenu.pausable = false;
     }

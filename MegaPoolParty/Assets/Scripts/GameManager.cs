@@ -27,6 +27,16 @@ public class GameManager : MonoBehaviour
 
     public static MusicManager musicManager;
 
+    /*
+            None = 0,
+        Bomberman = 1,
+        Swimming = 2,
+        Pong = 3,
+        Quiz = 4
+    */
+
+    public static int gameSeqIndex = -1;
+    public static int[] gameSequence = new int[] { 1, 4, 2, 3, 4 };
     /// <summary>
     /// Nur, wenn die Zeit tickt, darf input gecaptured werden
     /// musicManager == null benötigt, um zu prüfen, ob direkt in der Szene gestartet wurde zum Debuggen
@@ -90,18 +100,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
-            int gameCounts = Enum.GetNames(typeof(Games)).Length;
-            System.Random random = new System.Random();
-
-            int nextGame = 0;
-            while (nextGame == 0 || nextGame == (int)lastGame)
-            {
-                int randomNumber = random.Next(1, gameCounts);
-                nextGame = randomNumber;
-            }
-
-            lastGame = (Games)nextGame;
+            //roundTrip
+            gameSeqIndex += 1;
+            if (gameSeqIndex >= gameSequence.Length) gameSeqIndex = 0;
+            lastGame = (Games)gameSequence[gameSeqIndex];
             StartGame(lastGame);
         }
     }
@@ -252,7 +254,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(2, LoadSceneMode.Additive);
                 break;
             case Games.Pong:
-                musicManager?.PlayMusic(false);
+                musicManager?.PlayMusic(true);
                 SceneManager.LoadScene(3, LoadSceneMode.Additive);
                 break;
             case Games.Quiz:

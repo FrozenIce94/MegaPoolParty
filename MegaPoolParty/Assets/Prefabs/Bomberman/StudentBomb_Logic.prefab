@@ -67,16 +67,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3663021452375926781, guid: 3860f505c76e06045b0ccd877a2c2e67,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6176841598084171537, guid: 3860f505c76e06045b0ccd877a2c2e67,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23bf73261e38f0d47ab5027468605484, type: 2}
     - target: {fileID: 1490635741907928195, guid: 3860f505c76e06045b0ccd877a2c2e67,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -97,9 +87,25 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3663021452375926781, guid: 3860f505c76e06045b0ccd877a2c2e67,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176841598084171537, guid: 3860f505c76e06045b0ccd877a2c2e67,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23bf73261e38f0d47ab5027468605484, type: 2}
     m_RemovedComponents:
     - {fileID: 3194201149327615374, guid: 3860f505c76e06045b0ccd877a2c2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3860f505c76e06045b0ccd877a2c2e67, type: 3}
+--- !u!1 &6092129441955976613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9121533320807453587, guid: 3860f505c76e06045b0ccd877a2c2e67,
+    type: 3}
+  m_PrefabInstance: {fileID: 3034763456883590710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2262059067048750637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3853348405883856923, guid: 3860f505c76e06045b0ccd877a2c2e67,
@@ -200,6 +206,11 @@ PrefabInstance:
       propertyPath: explosionSound
       value: 
       objectReference: {fileID: 7840873937197352929}
+    - target: {fileID: 4860252649268652614, guid: 62c61d1968aeb1944889b3efc069bfc4,
+        type: 3}
+      propertyPath: bombModel
+      value: 
+      objectReference: {fileID: 6092129441955976613}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c61d1968aeb1944889b3efc069bfc4, type: 3}
 --- !u!4 &6836353474124312277 stripped
