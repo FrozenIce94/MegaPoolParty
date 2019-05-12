@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeacherBomb
       objectReference: {fileID: 0}
+    - target: {fileID: 8789061098697789465, guid: 7be1279f556d2a744a187f2c0a4593f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5871635509535012008, guid: 7be1279f556d2a744a187f2c0a4593f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,13 +72,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8789061098697789465, guid: 7be1279f556d2a744a187f2c0a4593f1,
+    - target: {fileID: 1317292451741032766, guid: 7be1279f556d2a744a187f2c0a4593f1,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317292451741032766, guid: 7be1279f556d2a744a187f2c0a4593f1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be1279f556d2a744a187f2c0a4593f1, type: 3}
+--- !u!1 &5761912517937564388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2602147483727762221, guid: 7be1279f556d2a744a187f2c0a4593f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7776242874778032585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5191678254445389931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2586834665169547682, guid: 7be1279f556d2a744a187f2c0a4593f1,
@@ -174,6 +190,11 @@ PrefabInstance:
       propertyPath: explosionSound
       value: 
       objectReference: {fileID: 3977962104474006632}
+    - target: {fileID: 4860252649268652614, guid: 62c61d1968aeb1944889b3efc069bfc4,
+        type: 3}
+      propertyPath: bombModel
+      value: 
+      objectReference: {fileID: 5761912517937564388}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c61d1968aeb1944889b3efc069bfc4, type: 3}
 --- !u!4 &7066437573547272773 stripped

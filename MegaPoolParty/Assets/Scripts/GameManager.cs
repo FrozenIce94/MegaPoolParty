@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(2, LoadSceneMode.Additive);
                 break;
             case Games.Pong:
-                musicManager?.PlayMusic(false);
+                musicManager?.PlayMusic(true);
                 SceneManager.LoadScene(3, LoadSceneMode.Additive);
                 break;
             case Games.Quiz:
