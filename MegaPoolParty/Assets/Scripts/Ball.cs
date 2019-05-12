@@ -5,9 +5,9 @@ public class Ball : MonoBehaviour {
 
 	public float ballInitialVelocity = 600f;
 	private Rigidbody rb;
-	private bool ballInPlay=false;
 
-	void Awake () {
+	void Awake ()
+    {
 
 		rb = GetComponent<Rigidbody> ();
 
@@ -59,7 +59,6 @@ public class Ball : MonoBehaviour {
     public void AddF(bool positiv)
     {
         transform.parent = null;
-        ballInPlay = true;
         rb.isKinematic = false;
         if (positiv)
         {

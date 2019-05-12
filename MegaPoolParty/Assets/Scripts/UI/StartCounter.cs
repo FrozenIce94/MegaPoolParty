@@ -8,7 +8,7 @@ public class StartCounter : MonoBehaviour
 {
     public delegate void OnTimerFinished();
     private OnTimerFinished timerFinishedCallback;
-    private bool timerActive = false;
+    public bool timerActive = false;
     private float timeLeft;
     public readonly float initialTime = 30.0f;
 

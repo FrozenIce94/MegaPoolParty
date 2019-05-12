@@ -18,7 +18,7 @@ public class GM : MonoBehaviour
     public Text Text_Count;
 
     private GameManager gameM;
-
+    private System.Random rnd = new System.Random();
     public static bool hasBall;
 
     public bool firstBall;
@@ -28,11 +28,12 @@ public class GM : MonoBehaviour
 
     public bool SchuelerWinner;
 
-    bool endRequested = false;
+    bool countDownTimerFinished = false;
+    bool firstBallSpawn = true;
     bool timerRegistered = false;
-    public void requestEnd()
+    public void timerEndGameStart()
     {
-        endRequested = true;
+        countDownTimerFinished = true;
     }
 
     // Use this for initialization
@@ -56,20 +57,24 @@ public class GM : MonoBehaviour
     {
         if (!timerRegistered)
         {
-            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Swimming);
+            timerRegistered = GetComponent<GameManager>().StartTimer(timerEndGameStart, GameManager.Games.Swimming);
         }
         if (!timerRegistered)
             return;
 
-        bool StartInput = false;
 
         if (Text_Sieg.enabled == true)
         {
             return;
         }
-
-        if ((Input.GetButtonDown("Fire1_S") || Input.GetButtonDown("Fire1_L") || Input.GetKey(KeyCode.Space)) && hasBall == false)
+        if (!GameManager.CanCaptureInput) return;
+        if ((Input.GetButtonDown("Fire1_S") 
+            || Input.GetButtonDown("Fire1_L") 
+            || Input.GetKey(KeyCode.Space) 
+            || firstBallSpawn)
+            && hasBall == false)
         {
+            firstBallSpawn = false;
             if (!firstBall) { return; }
             firstBall = false;
             Debug.Log("new Ball");
@@ -99,7 +104,7 @@ public class GM : MonoBehaviour
     {
         Text_Start.enabled = false;
         bool pos = false;
-        if (Random.Range(0, 100) > 50)
+        if (rnd.Next(0, 100) > 50)
         {
             pos = true;
         }
@@ -135,11 +140,9 @@ public class GM : MonoBehaviour
             case 1:
                 Sieg(1);
                 return;
-                break;
             case 2:
                 Sieg(2);
                 return;
-                break;
         }
 
         Countdowntime = Time.timeSinceLevelLoad;
@@ -209,7 +212,7 @@ public class GM : MonoBehaviour
 
         }
 
-        if (endRequested)
+        if (countDownTimerFinished)
         {
             if(L_Score > R_Score)
             {

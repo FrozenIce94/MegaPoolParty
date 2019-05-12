@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
     public static StartCounter timer;
 
     public static MusicManager musicManager;
+
+    /// <summary>
+    /// Nur, wenn die Zeit tickt, darf input gecaptured werden
+    /// </summary>
+    public static bool CanCaptureInput { get { return (timer != null) 
+                && (timer.isActiveAndEnabled)
+                && (timer.timerActive); } }
     #endregion
     #region "Start"
     private void Start()
@@ -46,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
     #region "Public Methods"
+
 
     /// <summary>
     /// Initialisiert das Basisspiel

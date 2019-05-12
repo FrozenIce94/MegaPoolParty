@@ -45,6 +45,7 @@ public class Swimmer : MonoBehaviour
             return;
         rigidBody.velocity = new Vector3(0, 0, 0);
 
+        if (!GameManager.CanCaptureInput) return;
         var prefix = (IsStudent ? "Student" : "Lehrer");
         var horizontalVelocity = Input.GetAxisRaw($"{prefix}H");
 

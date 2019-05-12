@@ -2023,7 +2023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheatNextGame: 1
+  CheatNextGame: 3
 --- !u!114 &917524026
 MonoBehaviour:
   m_ObjectHideFlags: 0

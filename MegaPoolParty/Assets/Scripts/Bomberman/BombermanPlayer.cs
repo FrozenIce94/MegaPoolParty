@@ -87,6 +87,7 @@ public class BombermanPlayer : MonoBehaviour
 
     void ProcessInput()
     {
+        if (!GameManager.CanCaptureInput) return;
         //StudentV -Input.GetAxis("StudentV")
         //StudentH - Input.GetAxis("StudentH")
         //Fire1_S - Input.GetButtonDown("Fire1_S") 
