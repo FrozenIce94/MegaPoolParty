@@ -28,6 +28,9 @@ public class GM : MonoBehaviour
 
     public bool SchuelerWinner;
 
+    public Animation LeherAnim;
+    public Animation SchuelerAnim;
+
     bool countDownTimerFinished = false;
     bool firstBallSpawn = true;
     bool timerRegistered = false;
@@ -127,6 +130,7 @@ public class GM : MonoBehaviour
 
     public void Score(bool isLinks)
     {
+        GameManager.musicManager.ActionSound(MusicManager.ActionSounds.RightAnswer);
 
         Destroy(cloneBall);
 
@@ -150,8 +154,10 @@ public class GM : MonoBehaviour
                 break;
             case 1:
                 Sieg(1);
+                LeherAnim.Play();                
                 return;
             case 2:
+                SchuelerAnim.Play();
                 Sieg(2);
                 return;
         }
@@ -191,7 +197,7 @@ public class GM : MonoBehaviour
             SchuelerWinner = false;
         }
         Text_Sieg.enabled = true;
-        Invoke("Neustart", 2);
+        Invoke("Neustart", 4);
     }
 
     private void Neustart()

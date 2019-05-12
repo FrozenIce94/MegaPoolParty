@@ -85,7 +85,7 @@ public class Ball : MonoBehaviour {
     {
         //Bei Kollision mit dem Spieler den Sound abspielen
           if (collision.collider.tag == "Player")
-         GameManager.musicManager.ActionSound(MusicManager.ActionSounds.PongHit);
+        GameManager.musicManager.ActionSound(MusicManager.ActionSounds.PongHit);
         //Debug.Log(transform.eulerAngles);
     }
 }
