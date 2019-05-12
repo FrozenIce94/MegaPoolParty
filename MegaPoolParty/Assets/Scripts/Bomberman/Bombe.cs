@@ -12,6 +12,7 @@ public class Bombe : MonoBehaviour
     public float explosionRadius = 25f;
     public float fallForce = 300f;
     public GameObject explosionModel;
+    public GameObject bombModel;
     public ParticleSystem explosionParticles;
     public AudioSource explosionSound;
 
@@ -47,6 +48,7 @@ public class Bombe : MonoBehaviour
 
     private IEnumerator Explode()
     {
+        bombModel.SetActive(false);
         explosionParticles.transform.position = transform.position;
         explosionParticles.Play();
         yield return new WaitForSeconds(explosionDuration);

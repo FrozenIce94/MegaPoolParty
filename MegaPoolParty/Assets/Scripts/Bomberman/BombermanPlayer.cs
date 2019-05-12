@@ -186,8 +186,6 @@ public class BombermanPlayer : MonoBehaviour
                                               placeVector.z),
                                   Quaternion.Euler((IsStudent ? new Vector3(300,180,0) : Vector3.zero)), controllerInstance.transform);
 
-
-
         var bombCollider = bombObj.GetComponent<Collider>();
         currentBombColliders.Add(bombCollider);
         Physics.IgnoreCollision(bombCollider, playerCollider);

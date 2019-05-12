@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(2, LoadSceneMode.Additive);
                 break;
             case Games.Pong:
-                musicManager?.PlayMusic(false);
+                musicManager?.PlayMusic(true);
                 SceneManager.LoadScene(3, LoadSceneMode.Additive);
                 break;
             case Games.Quiz:
@@ -275,6 +275,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("GameManager: Lehrer gewonnen");
             SceneManager.UnloadSceneAsync((int)lastGame);
             musicManager.ActionSound(ActionSounds.TeacherWin);
+            StartCoroutine(Waiter());
             ShowEndScreen(false);
             return;
         }
@@ -284,11 +285,17 @@ public class GameManager : MonoBehaviour
             Debug.Log("GameManager: Schüler gewonnen");
             SceneManager.UnloadSceneAsync((int)lastGame);
             musicManager.ActionSound(ActionSounds.StudentWin);
+            StartCoroutine(Waiter());
             ShowEndScreen(true);
             return;
         }
 
         CloseSceneAndShowHub();
+    }
+
+    private IEnumerator Waiter()
+    {
+        yield return new WaitForSeconds(2f);
     }
 
     /// <summary>
@@ -310,6 +317,7 @@ public class GameManager : MonoBehaviour
     {
         musicManager.PlayMusic(false);
         SceneManager.UnloadSceneAsync((int)lastGame);
+        StartCoroutine(Waiter());
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
 
