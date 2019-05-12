@@ -57,7 +57,7 @@ public class GM : MonoBehaviour
     {
         if (!timerRegistered)
         {
-            timerRegistered = GetComponent<GameManager>().StartTimer(timerEndGameStart, GameManager.Games.Swimming);
+            timerRegistered = GetComponent<GameManager>().StartTimer(timerEndGameStart, GameManager.Games.Pong);
         }
         //if (!timerRegistered)
         //    return;

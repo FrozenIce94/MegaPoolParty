@@ -184,7 +184,7 @@ public class BombermanPlayer : MonoBehaviour
                                   new Vector3(placeVector.x, 
                                               bombPrefab.transform.localScale.y * 0.5f,
                                               placeVector.z),
-                                  Quaternion.Euler(Vector3.zero), controllerInstance.transform);
+                                  Quaternion.Euler((IsStudent ? new Vector3(300,180,0) : Vector3.zero)), controllerInstance.transform);
 
 
 

@@ -99,6 +99,7 @@ public class PauseMenu : MonoBehaviour
     {
         endScreen.SetActive(false);
         mainMenu.SetActive(true);
+        mainMenuButton.Select();
     }
 
     /// <summary>

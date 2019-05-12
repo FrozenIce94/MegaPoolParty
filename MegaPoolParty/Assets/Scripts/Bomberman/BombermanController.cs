@@ -155,7 +155,7 @@ public class BombermanController : MonoBehaviour
     {
         if (!timerRegistered)
         {
-            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Swimming);
+            timerRegistered = GetComponent<GameManager>().StartTimer(requestEnd, GameManager.Games.Bomberman);
         }
         if (!timerRegistered)
             return;
