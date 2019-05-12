@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject mainMenu;
     public GameObject endScreen;
+    public GameObject creditsScreen;
 
     public Button mainMenuButton, pauseMenuButton, endButton;
 
@@ -100,6 +101,13 @@ public class PauseMenu : MonoBehaviour
         endScreen.SetActive(false);
         mainMenu.SetActive(true);
         mainMenuButton.Select();
+        creditsScreen.SetActive(false);
+    }
+
+    public void ShowCreditsScreen()
+    {
+        mainMenu.SetActive(false);
+        creditsScreen.SetActive(true);
     }
 
     /// <summary>
