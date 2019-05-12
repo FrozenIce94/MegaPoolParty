@@ -33,7 +33,18 @@ public class GM : MonoBehaviour
     bool timerRegistered = false;
     public void timerEndGameStart()
     {
-        countDownTimerFinished = true;
+        if (L_Score > R_Score)
+        {
+            gameM.EndMinigame(true);
+        }
+        else if (L_Score < R_Score)
+        {
+            gameM.EndMinigame(false);
+        }
+        else
+        {
+            gameM.EndMinigame(null);
+        }
     }
 
     // Use this for initialization
@@ -216,10 +227,10 @@ public class GM : MonoBehaviour
         {
             if(L_Score > R_Score)
             {
-                return 1;
+                gameM.EndMinigame(true);
             } else if(L_Score < R_Score)
             {
-                return 2;
+                gameM.EndMinigame(false);
             } else
             {
                 gameM.EndMinigame(null);
