@@ -75,11 +75,13 @@ public class Quiz : MonoBehaviour
         categoryObj.GetComponent<TextMeshPro>().text = db.categories[categoryIndex].categoryName;
         answeredQuestions = new ArrayList();
         answerPermutation = new ArrayList();
-
+        currentDelay = delayAfterAnswer;
     }
 
     bool timerRegistered = false;
+    public float delayAfterAnswer = 0.5f;
 
+    private float currentDelay;
     // Update is called once per frame
     void Update()
     {
@@ -91,6 +93,8 @@ public class Quiz : MonoBehaviour
         }
 
         float currentTime = Time.time;
+        currentDelay -= Time.deltaTime;
+
 
         if (newQuestion)
         {
@@ -141,11 +145,11 @@ public class Quiz : MonoBehaviour
 
         answerAObj.GetComponent<TextMeshPro>().text = answerText;
         if (!GameManager.CanCaptureInput && !endRequested) return;
-        if(Input.GetKeyDown(KeyCode.A)  || 
+        if((Input.GetKeyDown(KeyCode.A)  || 
             Input.GetKeyDown(KeyCode.W) || 
             Input.GetKeyDown(KeyCode.S) || 
             Input.GetKeyDown(KeyCode.D) ||
-            Input.GetButtonDown("Fire1_S"))
+            Input.GetButtonDown("Fire1_S")) && currentDelay <= 0)
         {
             newQuestion = true;
             if(0 == (int)answerPermutation[answerIndex]) //correct answer
@@ -167,11 +171,11 @@ public class Quiz : MonoBehaviour
                 answeredQuestions.Clear();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow)  || 
+        else if ((Input.GetKeyDown(KeyCode.UpArrow)  || 
             Input.GetKeyDown(KeyCode.DownArrow)     || 
             Input.GetKeyDown(KeyCode.LeftArrow)     || 
             Input.GetKeyDown(KeyCode.RightArrow)    ||
-            Input.GetButtonDown("Fire1_L"))
+            Input.GetButtonDown("Fire1_L")) && currentDelay <= 0)
         {
             newQuestion = true;
             if (0 == (int)answerPermutation[answerIndex]) //correct answer
@@ -204,6 +208,7 @@ public class Quiz : MonoBehaviour
         {
             GetComponent<GameManager>().EndMinigame(null);
         }
+        if (newQuestion) currentDelay = delayAfterAnswer;
 
         if (endRequested)
         {
