@@ -37,6 +37,9 @@ public class StartCounter : MonoBehaviour
     public GameObject countdownContainer;
     [Header("GameManager")]
     public GameManager gameManager;
+    [Header("Instruction Images")]
+    public UnityEngine.UI.Image instructionImageRenderer;
+    public Sprite[] sprites;
 
     private void Start()
     {
@@ -158,6 +161,7 @@ public class StartCounter : MonoBehaviour
         instructions.SetActive(true);
         TextMeshProUGUI descText = instDescription.GetComponent<TextMeshProUGUI>();
         descText.text = descriptionList[(int)game];
+        instructionImageRenderer.sprite = sprites[(int)game-1];
         showInstructions = true;
         GameManager.pauseMenu.pausable = false;
     }
