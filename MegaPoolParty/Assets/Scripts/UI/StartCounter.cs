@@ -24,6 +24,8 @@ public class StartCounter : MonoBehaviour
 
     private bool showInstructions = false;
 
+    public GameObject[] wiggles;
+
     private bool m_isAxisInUse = false;
     [Header("Timer Object")]
     public GameObject timer;
@@ -74,6 +76,13 @@ public class StartCounter : MonoBehaviour
             {
                 TimerDone();
             }
+            if(timeLeft < initialTime * 0.2)
+            {
+                foreach(GameObject go in wiggles)
+                {
+                    go.SetActive(true);
+                }
+            }
         }
 
         if (countdownActive)
@@ -116,6 +125,10 @@ public class StartCounter : MonoBehaviour
 
     public void StopGame()
     {
+        foreach (GameObject go in wiggles)
+        {
+            go.SetActive(true);
+        }
         timerFinishedCallback = null;
         timerActive = false;
         timer.SetActive(false);
@@ -168,6 +181,10 @@ public class StartCounter : MonoBehaviour
 
     void TimerDone()
     {
+        foreach (GameObject go in wiggles)
+        {
+            go.SetActive(false);
+        }
         timerActive = false;
         timer.SetActive(false);
         timerFinishedCallback();
