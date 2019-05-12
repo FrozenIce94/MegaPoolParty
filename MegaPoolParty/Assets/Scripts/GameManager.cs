@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitializeGame()
     {
-        currentfield = 2;
+        currentfield = 4;
         lastfield = 4;
         lastGame = Games.None;
         gamerunning = false;

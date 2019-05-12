@@ -644,8 +644,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 5, y: 248}
-  m_SizeDelta: {x: 1474.7, y: 822.4}
+  m_AnchoredPosition: {x: 0, y: 643}
+  m_SizeDelta: {x: 2654.6, y: 1403.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1353822202
 MonoBehaviour:
@@ -766,17 +766,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 150
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: a6617cebf13e664459f828e9b9c2e126,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1333a1cab1746734cb9a773784e3123f, type: 2}
-    - target: {fileID: 6200443131042155592, guid: a6617cebf13e664459f828e9b9c2e126,
+    - target: {fileID: -3815348637671979988, guid: a6617cebf13e664459f828e9b9c2e126,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3f310a11a5a35af4a9733255623cc468, type: 2}
-    - target: {fileID: -3815348637671979988, guid: a6617cebf13e664459f828e9b9c2e126,
+    - target: {fileID: 6200443131042155592, guid: a6617cebf13e664459f828e9b9c2e126,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -786,6 +781,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3f310a11a5a35af4a9733255623cc468, type: 2}
+    - target: {fileID: -6057140222963153312, guid: a6617cebf13e664459f828e9b9c2e126,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1333a1cab1746734cb9a773784e3123f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6617cebf13e664459f828e9b9c2e126, type: 3}
 --- !u!4 &1387392068 stripped
