@@ -1884,6 +1884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 408964271}
   - component: {fileID: 408964270}
+  - component: {fileID: 408964269}
   m_Layer: 0
   m_Name: GameCamera
   m_TagString: MainCamera
@@ -1891,6 +1892,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &408964269
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408964268}
+  m_Enabled: 1
 --- !u!20 &408964270
 Camera:
   m_ObjectHideFlags: 0
@@ -7256,6 +7265,12 @@ PrefabInstance:
       propertyPath: stuckInCollisionMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3044951561229799246, guid: 6a5398168d7807248af17d7cd8152f44,
+        type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 407498694115861508, guid: 0547af94d1934d940b04f9693892e5b2,
+        type: 3}
     - target: {fileID: 3044951561229799241, guid: 6a5398168d7807248af17d7cd8152f44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7375,6 +7390,12 @@ PrefabInstance:
       propertyPath: stuckInCollisionMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4778828411197313935, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
+        type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 4136878603824259220, guid: b34b30304f84a054383c64376a38e86d,
+        type: 3}
     - target: {fileID: 4778828411197313928, guid: 14eba55d826bfcc4bacc4d6688f01cdd,
         type: 3}
       propertyPath: m_RootOrder
