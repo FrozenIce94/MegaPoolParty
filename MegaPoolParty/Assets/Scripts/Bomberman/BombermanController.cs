@@ -84,7 +84,7 @@ public class BombermanController : MonoBehaviour
     {
         var lineArray = Regex.Split(levelGenFile.text, "\r\n|\r|\n"); 
         var gamesCount = lineArray.Length / 8;
-        var chosenLevel = rnd.Next(0, gamesCount + 1);
+        var chosenLevel = rnd.Next(0, gamesCount);
         Debug.Log($"Ich habe mich für Level {chosenLevel} entschieden.");
         for (int lineIndex = chosenLevel * 8; lineIndex < chosenLevel * 8 + 7; lineIndex++)
         {
