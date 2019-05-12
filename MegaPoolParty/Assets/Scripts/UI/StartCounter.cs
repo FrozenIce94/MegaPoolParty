@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,8 +14,11 @@ public class StartCounter : MonoBehaviour
     public readonly float initialTime = 30.0f;
 
     private string[] descriptionList = new string[] {"None, you should not be here!",
-        "",
-        "",
+        $"Das Ziel des Spieles ist es, mit seiner 'Bombe' den gegenerischen Spielercharakter einzukesseln.{Environment.NewLine}" +
+        $"Hierfür bewegt man sich mit seiner Figur mittels der Pfeiltasten (Lehrer) / WASD (Schüler) oder dem Joystick.{Environment.NewLine}" +
+        $"Die Bombe platziert man mit der linken (Schüler) oder rechten (Lehrer) Shift-Taste oder dem Hauptbutton.",
+        $"Das Ziel des Spieles ist es, mit seinem Schüler oder dem Lehrer als erstes an die andere Seite der Schwimmbahn zu kommen{Environment.NewLine}" +
+        $"Hierfür bewegt man sich abwechseln nach Links- und Rechts um sich auf die andere Seite zu bewegen.",
         "",
         "" };
 
@@ -156,7 +160,7 @@ public class StartCounter : MonoBehaviour
     {
         instructions.SetActive(true);
         TextMeshProUGUI descText = instDescription.GetComponent<TextMeshProUGUI>();
-        descText.text = "test Beschreibung vom code aus fuer game: " + game.ToString();
+        descText.text = descriptionList[(int)game];
         showInstructions = true;
         GameManager.pauseMenu.pausable = false;
     }
