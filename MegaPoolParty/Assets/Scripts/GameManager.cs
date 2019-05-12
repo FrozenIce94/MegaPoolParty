@@ -30,10 +30,13 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// Nur, wenn die Zeit tickt, darf input gecaptured werden
+    /// musicManager == null benötigt, um zu prüfen, ob direkt in der Szene gestartet wurde zum Debuggen
     /// </summary>
-    public static bool CanCaptureInput { get { return (timer != null) 
+    public static bool CanCaptureInput { get { return 
+                (musicManager == null) ||
+                ((timer != null) 
                 && (timer.isActiveAndEnabled)
-                && (timer.timerActive); } }
+                && (timer.timerActive)); } }
     #endregion
     #region "Start"
     private void Start()

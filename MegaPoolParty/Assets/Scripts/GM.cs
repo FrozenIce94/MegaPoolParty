@@ -59,8 +59,8 @@ public class GM : MonoBehaviour
         {
             timerRegistered = GetComponent<GameManager>().StartTimer(timerEndGameStart, GameManager.Games.Swimming);
         }
-        if (!timerRegistered)
-            return;
+        //if (!timerRegistered)
+        //    return;
 
 
         if (Text_Sieg.enabled == true)
