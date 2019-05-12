@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject endScreen;
     public GameObject creditsScreen;
 
-    public Button mainMenuButton, pauseMenuButton, endButton;
+    public Button mainMenuButton, pauseMenuButton, endButton, creditsMenuButton;
 
     public TextMeshProUGUI endtext;
 
@@ -108,6 +108,7 @@ public class PauseMenu : MonoBehaviour
     {
         mainMenu.SetActive(false);
         creditsScreen.SetActive(true);
+        creditsMenuButton.Select();
     }
 
     /// <summary>

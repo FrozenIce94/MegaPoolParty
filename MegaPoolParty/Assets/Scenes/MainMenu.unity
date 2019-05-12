@@ -2678,6 +2678,7 @@ MonoBehaviour:
   mainMenuButton: {fileID: 1508948956}
   pauseMenuButton: {fileID: 381844581}
   endButton: {fileID: 629537537}
+  creditsMenuButton: {fileID: 739400529}
   endtext: {fileID: 1170315802}
 --- !u!114 &917524025
 MonoBehaviour:
@@ -2691,11 +2692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d0770b3501f941b8c2d4cdaea0944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheatNextGame: 0
---- !u!1 &920620068
-GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
