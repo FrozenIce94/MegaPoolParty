@@ -14,6 +14,11 @@ public class MusicManager : MonoBehaviour
     public AudioSource Countdown;
     public AudioSource StudentLoose;
     public AudioSource TeacherLoose;
+    public AudioSource StudentWin;
+    public AudioSource TeacherWin;
+    public AudioSource PongHit;
+    public AudioSource WrongAnswer;
+    public AudioSource RightAnswer;
 
     public GameManager startGameManager;
     // Start is called before the first frame update
@@ -63,6 +68,21 @@ public class MusicManager : MonoBehaviour
             case ActionSounds.TeacherLoose:
                 TeacherLoose.Play();
                 break;
+            case ActionSounds.StudentWin:
+                StudentWin.Play();
+                break;
+            case ActionSounds.TeacherWin:
+                TeacherWin.Play();
+                break;
+            case ActionSounds.PongHit:
+                PongHit.Play();
+                break;
+            case ActionSounds.WrongAnswer:
+                WrongAnswer.Play();
+                break;
+            case ActionSounds.RightAnswer:
+                RightAnswer.Play();
+                break;
             default:
                 break;
         }
@@ -73,8 +93,12 @@ public class MusicManager : MonoBehaviour
     {
         Countdown,
         StudentLoose,
-        TeacherLoose
-
+        TeacherLoose,
+        StudentWin,
+        TeacherWin,
+        PongHit,
+        WrongAnswer,
+        RightAnswer
     }
 
 

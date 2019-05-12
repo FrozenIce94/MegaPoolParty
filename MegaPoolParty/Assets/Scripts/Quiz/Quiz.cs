@@ -151,11 +151,13 @@ public class Quiz : MonoBehaviour
             if(0 == (int)answerPermutation[answerIndex]) //correct answer
             {
                 studentScore += 1;
+                GameManager.musicManager.ActionSound(MusicManager.ActionSounds.RightAnswer);
                 studentScoreObj.GetComponent<TextMeshPro>().text = studentScore.ToString();
             }
             else
             {
                 teacherScore += 1;
+                GameManager.musicManager.ActionSound(MusicManager.ActionSounds.WrongAnswer);
                 teacherScoreObj.GetComponent<TextMeshPro>().text = teacherScore.ToString();
             }
 
@@ -175,11 +177,13 @@ public class Quiz : MonoBehaviour
             if (0 == (int)answerPermutation[answerIndex]) //correct answer
             {
                 teacherScore += 1;
+                GameManager.musicManager.ActionSound(MusicManager.ActionSounds.RightAnswer);
                 teacherScoreObj.GetComponent<TextMeshPro>().text = teacherScore.ToString();
             }
             else
             {
                 studentScore += 1;
+                GameManager.musicManager.ActionSound(MusicManager.ActionSounds.WrongAnswer);
                 studentScoreObj.GetComponent<TextMeshPro>().text = studentScore.ToString();
             }
             answeredQuestions.Add(questionIndex);

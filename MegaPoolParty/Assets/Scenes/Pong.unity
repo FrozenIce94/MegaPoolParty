@@ -1757,8 +1757,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094688966}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3.86, z: 0}
+  m_LocalRotation: {x: 0.23645616, y: 0.026810706, z: 0.0065271175, w: -0.9712503}
+  m_LocalPosition: {x: 1.0778453, y: -6.112659, z: -19.508265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2167,6 +2167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: panel2
       objectReference: {fileID: 0}
+    - target: {fileID: 5588450678015751476, guid: 5f94054af30ad524bbbc4fe48527cec0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5588450678015751472, guid: 5f94054af30ad524bbbc4fe48527cec0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2242,6 +2247,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: panel1
       objectReference: {fileID: 0}
+    - target: {fileID: 6381142233573007908, guid: b657451d41225c24585628fb2b8f1884,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381142232587129651, guid: b657451d41225c24585628fb2b8f1884,
+        type: 3}
+      propertyPath: time
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6381142233573007904, guid: b657451d41225c24585628fb2b8f1884,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2296,11 +2311,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381142232587129651, guid: b657451d41225c24585628fb2b8f1884,
-        type: 3}
-      propertyPath: time
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b657451d41225c24585628fb2b8f1884, type: 3}

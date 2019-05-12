@@ -271,6 +271,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("GameManager: Lehrer gewonnen");
             SceneManager.UnloadSceneAsync((int)lastGame);
+            musicManager.ActionSound(ActionSounds.TeacherWin);
             ShowEndScreen(false);
             return;
         }
@@ -279,6 +280,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("GameManager: Schüler gewonnen");
             SceneManager.UnloadSceneAsync((int)lastGame);
+            musicManager.ActionSound(ActionSounds.StudentWin);
             ShowEndScreen(true);
             return;
         }

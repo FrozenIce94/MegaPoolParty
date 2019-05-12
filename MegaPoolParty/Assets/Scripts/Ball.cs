@@ -69,4 +69,11 @@ public class Ball : MonoBehaviour {
             rb.AddForce(new Vector3(-ballInitialVelocity, 0, -ballInitialVelocity));
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Bei Kollision mit dem Spieler den Sound abspielen
+        if (collision.collider.tag == "Player")
+            GameManager.musicManager.ActionSound(MusicManager.ActionSounds.PongHit);
+    }
 }
