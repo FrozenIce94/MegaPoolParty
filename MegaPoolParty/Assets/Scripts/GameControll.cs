@@ -30,6 +30,7 @@ public class GameControll : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.CanCaptureInput) return;
         Controll1();
     }
 

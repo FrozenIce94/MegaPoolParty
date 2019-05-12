@@ -140,7 +140,7 @@ public class Quiz : MonoBehaviour
         }
 
         answerAObj.GetComponent<TextMeshPro>().text = answerText;
-        if (!GameManager.CanCaptureInput) return;
+        if (!GameManager.CanCaptureInput && !endRequested) return;
         if(Input.GetKeyDown(KeyCode.A)  || 
             Input.GetKeyDown(KeyCode.W) || 
             Input.GetKeyDown(KeyCode.S) || 
