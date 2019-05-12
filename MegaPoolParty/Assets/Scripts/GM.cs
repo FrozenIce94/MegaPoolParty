@@ -164,7 +164,7 @@ public class GM : MonoBehaviour
 
     public void startSetupZwei()
     {
-        Debug.Log(Countdowntime + ":" + Time.timeSinceLevelLoad);
+      //  Debug.Log(Countdowntime + ":" + Time.timeSinceLevelLoad);
 
         Text_Count.text = "1";
 

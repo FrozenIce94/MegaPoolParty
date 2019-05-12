@@ -31,6 +31,17 @@ public class Ball : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            transform.LookAt(Vector3.left);
+            rb.Sleep();
+            rb.AddForce(new Vector3(600, 0, 600));
+            // Debug.Log("Test");
+        }
+
+
+
         bool StartInput = false;
        // if ((Input.GetButtonDown("Fire1") || Input.GetKey(KeyCode.Space)) && ballInPlay == false)
        // {
@@ -73,7 +84,8 @@ public class Ball : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         //Bei Kollision mit dem Spieler den Sound abspielen
-        if (collision.collider.tag == "Player")
-            GameManager.musicManager.ActionSound(MusicManager.ActionSounds.PongHit);
+          if (collision.collider.tag == "Player")
+         GameManager.musicManager.ActionSound(MusicManager.ActionSounds.PongHit);
+        //Debug.Log(transform.eulerAngles);
     }
 }

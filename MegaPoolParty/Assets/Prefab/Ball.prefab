@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb867569e25cb9a44b397ec2b7d80926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballInitialVelocity: 400
+  ballInitialVelocity: 450
