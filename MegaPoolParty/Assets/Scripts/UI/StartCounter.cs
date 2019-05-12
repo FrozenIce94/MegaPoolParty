@@ -14,7 +14,7 @@ public class StartCounter : MonoBehaviour
     public readonly float initialTime = 30.0f;
 
     private string[] descriptionList = new string[] {"None, you should not be here!",
-        "Bibliotheks-Battle!\nWeiche den Hausaufgaben des Lehrers oder den Strinkbomben des Schülers aus und versuche deinen Gegner zu treffen.\nSteuere deinen Charakter mit WASD, Pfeiltasten oder mit dem linken Stick.\nShift links und rechts oder A auf dem Controller legen die Bomben.\nIhr könnt 3 Bomben gleichzeitig haben.",
+        "Bibliotheks-Battle!\nWeiche den Hausaufgaben des Lehrers oder den Stinkbomben des Schülers aus und versuche deinen Gegner zu treffen.\nSteuere deinen Charakter mit WASD, Pfeiltasten oder mit dem linken Stick.\nShift links und rechts oder A auf dem Controller legen die Bomben.\nIhr könnt 3 Bomben gleichzeitig haben.",
         "Wettschwimmen!\nWerde Erster, indem du abwechselnd A/D, Pfeil links/rechts drückst oder den Controller Stick nach links und rechts bewegst.",
         "Eine runde Beachball Pong im Pool!\nBewege deinen Spieler mit W/S, Pfeil Hoch/Runter oder linkem Joystick nach oben oder unten, um den Ball zum anderen Spieler zu bringen.",
         "Wissens-Quiz!\nDrücke bei der richtigen Antwort eine deiner Bewegungstasten oder A auf dem Controller" };
