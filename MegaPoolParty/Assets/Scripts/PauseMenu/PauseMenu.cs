@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
     public bool pausable = true;
 
     private bool m_isAxisInUse = false;
@@ -91,7 +90,7 @@ public class PauseMenu : MonoBehaviour
     {
         gm.InitializeGame();
         HideMainMenu();
-        gm.StartRandomGame();
+        gm.ShowHub();
     }
 
     /// <summary>

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public static StartCounter timer;
 
     public static MusicManager musicManager;
-
+    public static bool isFirstGame = true;
     /*
             None = 0,
         Bomberman = 1,
@@ -82,6 +82,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager: Startfeld: " + currentfield);
         Debug.Log("GameManager: Game Running: " + gamerunning);
         Debug.Log("GameManager: ----- End Init -----");
+    }
+
+    /// <summary>
+    /// Stellt den Hub dar
+    /// </summary>
+    public void ShowHub()
+    {
+        musicManager.PlayMusic(false);
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
 
     /// <summary>

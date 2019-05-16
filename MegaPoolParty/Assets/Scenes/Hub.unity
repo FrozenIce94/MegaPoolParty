@@ -563,8 +563,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1016555170}
+  playerModel: {fileID: 1387392069}
   gm: {fileID: 686831826}
   ps: {fileID: 1897149317}
+  nextGameLabel: {fileID: 197964316}
 --- !u!114 &686831826
 MonoBehaviour:
   m_ObjectHideFlags: 0

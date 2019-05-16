@@ -22,8 +22,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        gm.InitializeGame();   
-        gm.StartRandomGame();
+        gm.InitializeGame();
+        gm.ShowHub();
     }
 
     /// <summary>
