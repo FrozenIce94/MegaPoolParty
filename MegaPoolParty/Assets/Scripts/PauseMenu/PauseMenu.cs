@@ -98,11 +98,18 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void GoBackToMainMenu()
     {
-        SceneManager.UnloadSceneAsync(5);
         endScreen.SetActive(false);
         mainMenu.SetActive(true);
+        pauseMenu.SetActive(false);
         mainMenuButton.Select();
         creditsScreen.SetActive(false);
+        GameManager.isFirstGame = true;
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 1; i++)
+        {
+            var scene = SceneManager.GetSceneByBuildIndex(i);
+            if (scene != null && scene.IsValid())
+                SceneManager.UnloadSceneAsync(scene);
+        }
     }
 
     public void ShowCreditsScreen()
